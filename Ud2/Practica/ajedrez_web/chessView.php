@@ -193,11 +193,6 @@
     //                     array("ROWH", "KNWH", "BIWH", "QUWH", "KIWH", "BIWH", "KNWH", "ROWH");
     //                 }
     //         }
-            
-       
-
-
-
     //     }
 
         
@@ -237,7 +232,7 @@
                     echo "</td>";
                 }
 
-                // // Piezas Negras
+                // // Black Pieces
                 elseif ($square == "PABL") {
                     echo "<td>";
                     echo "<img src=\"Icons/BlackPawn.png\" alt=\"Black King\">";
