@@ -27,6 +27,8 @@
     td {
         border: 1px solid green;
         text-align: center;
+        width: 10px;
+        height: 10px;
     }
 
     /*WHITE SQUARE*/
@@ -37,6 +39,12 @@
     /*BLACK SQUARE*/
     td.black {
         background-color: black;
+    }
+
+    td img{
+        width: 100%;
+        height: 100%;
+
     }
 
     /*BLACK PIECES*/
@@ -68,7 +76,7 @@
 
 
     /*WHITE PIECES*/
-    0 td.PAWH {
+    td.PAWH {
         background-color: red;
     }
 
@@ -100,28 +108,45 @@
     ini_set('html_errors', 0);
 
 
-    function CreateEmptyBoard()
-    {
-        $rows = 8;
-        $columns = 8;
+    // function CreateEmptyBoard()
+    // {
+    //     $rows = 8;
+    //     $columns = 8;
 
-        $board = array([$rows], [$columns]);
+    //     $board = array();
+    //     $position = 0;
 
+    //     $text = "";
 
-        for ($row = $rows - 1; $row >= 0; $row--) {
+    //     for ($row = $rows - 1; $row >= 0; $row--) {
 
-            for ($column = 0; $column < $columns; $column++) {
-                if ((($row + $column) % 2) != 0) {
-                    $board[$row][$column] = "0000";
+    //         for ($column = 0; $column < $columns; $column++) {
+    //             if ((($row + $column) % 2) != 0) {
+    //                 $text += "0000";
 
-                } else {
-                    $board[$row][$column] = "####";
-                }
-            }
-        }
+    //             } else {
+    //                 $text += "####,";
+    //             }
 
-        return $board;
-    }
+    //         }
+    //     }
+
+    //     return $text;
+    // }
+
+    // function ArrayToString($array)
+    // {
+    //     $string = "";
+
+    //     for( $i = 0; $i < count($array); $i++ )
+    //     {
+    //        for ($y=0; $y < count($array[0]); $y++) { 
+    //         $string += $array[$i][$y];
+    //        } 
+    //     }
+
+    //     return $string;
+    // }
 
     // function tableroInicio()
     // {
@@ -176,22 +201,30 @@
     //     }
 
         
-    
 
 
-
-    function DrawChessGame($board)
+    function DrawChessGame($board) //Recives a string
     {
+
+        $text = explode(",", $board);
+        $position = 0;
+        for ($i=0; $i < 7; $i++) { 
+            for ($y=0; $y < 8; $y++) { 
+                $boardArray[$i][$y] = $text[$position];
+                $position ++;
+            }
+        }        
+
         echo "<table>";
 
-        for ($i = 0; $i < 8; $i++) {
+        for ($i = 0; $i < 7; $i++) {
             //rows
             echo "<tr>";
 
             for ($y = 0; $y < 8; $y++) {
                 // columns
     
-                $square = $board[$i][$y];
+                $square = $boardArray[$i][$y];
 
                 //  White Square
                 if ($square == "0000") {
@@ -204,58 +237,59 @@
                     echo "</td>";
                 }
 
-                // Piezas Negras
+                // // Piezas Negras
                 elseif ($square == "PABL") {
-                    echo "<td class=\"negro\">";
-                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                    echo "<td>";
+                    echo "<img src=\"Icons/BlackPawn.png\" alt=\"Black King\">";
                     echo "</td>";
-                } elseif ($square == "ROBL") {
-                    echo "<td class=\"negro\">";
-                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                    echo "</td>";
-                } elseif ($square == "KNBL") {
-                    echo "<td class=\"negro\">";
-                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                    echo "</td>";
-                } elseif ($square == "BIBL") {
-                    echo "<td class=\"negro\">";
-                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                    echo "</td>";
-                } elseif ($square == "QUBL") {
-                    echo "<td class=\"negro\">";
-                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                    echo "</td>";
-                } elseif ($square == "KIBL") {
-                    echo "<td class=\"negro\">";
-                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                    echo "</td>";
-                }
-                // White Pieces
-                elseif ($square == "ROWH") {
-                    echo "<td class=\"blanco\">";
-                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                    echo "</td>";
-                } elseif ($square == "KNWH") {
-                    echo "<td class=\"blanco\">";
-                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                    echo "</td>";
-                } elseif ($square == "BIWH") {
-                    echo "<td class=\"blanco\">";
-                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                    echo "</td>";
-                } elseif ($square == "QUWH") {
-                    echo "<td class=\"blanco\">";
-                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                    echo "</td>";
-                } elseif ($square == "KIWH") {
-                    echo "<td class=\"blanco\">";
-                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                    echo "</td>";
-                } elseif ($square == "PAWH") {
-                    echo "<td class=\"blanco\">";
-                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                    echo "</td>";
-                }
+                } 
+                // elseif ($square == "ROBL") {
+                //     echo "<td class=\"negro\">";
+                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                //     echo "</td>";
+                // } elseif ($square == "KNBL") {
+                //     echo "<td class=\"negro\">";
+                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                //     echo "</td>";
+                // } elseif ($square == "BIBL") {
+                //     echo "<td class=\"negro\">";
+                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                //     echo "</td>";
+                // } elseif ($square == "QUBL") {
+                //     echo "<td class=\"negro\">";
+                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                //     echo "</td>";
+                // } elseif ($square == "KIBL") {
+                //     echo "<td class=\"negro\">";
+                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                //     echo "</td>";
+                // }
+                // // White Pieces
+                // elseif ($square == "ROWH") {
+                //     echo "<td class=\"blanco\">";
+                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                //     echo "</td>";
+                // } elseif ($square == "KNWH") {
+                //     echo "<td class=\"blanco\">";
+                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                //     echo "</td>";
+                // } elseif ($square == "BIWH") {
+                //     echo "<td class=\"blanco\">";
+                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                //     echo "</td>";
+                // } elseif ($square == "QUWH") {
+                //     echo "<td class=\"blanco\">";
+                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                //     echo "</td>";
+                // } elseif ($square == "KIWH") {
+                //     echo "<td class=\"blanco\">";
+                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                //     echo "</td>";
+                // } elseif ($square == "PAWH") {
+                //     echo "<td class=\"blanco\">";
+                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                //     echo "</td>";
+                // }
 
 
             }
@@ -266,9 +300,9 @@
         echo "</table>";
     }
 
-    $emptyBoard = CreateEmptyBoard();
+    
     echo "<div class=\"board\">";
-    DrawChessGame($emptyBoard);
+    DrawChessGame("PABL,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000, 0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####, ####,0000,####,0000,####,0000,####,0000");
     echo "</div>";
     ?>
 </body>
