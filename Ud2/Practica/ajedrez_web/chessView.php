@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-    </head>
 
-    <style> 
-    *
-    {
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
         margin: 0;
         padding: 0;
     }
-    .tablero
-    {
+
+    .board {
         width: 800px;
         height: 800px;
     }
@@ -23,272 +23,254 @@
         height: 100%;
         border-collapse: collapse;
     }
-    
+
     td {
         border: 1px solid green;
         text-align: center;
     }
 
-    /*CASILLA BLANCA*/
-    td.blanco
-    {
-        background-color: white;    
+    /*WHITE SQUARE*/
+    td.white {
+        background-color: white;
     }
 
-    /*CASILLA NEGRA*/
-    td.negro
-    {
+    /*BLACK SQUARE*/
+    td.black {
         background-color: black;
     }
 
-    /*PIEZAS NEGRAS*/
-    td.PABL
-    {
+    /*BLACK PIECES*/
+    td.PABL {
         background-color: green;
     }
 
-    td.ROBL
-    {
+    td.ROBL {
         background-color: green;
     }
-    td.KNBL
-    {
+
+    td.KNBL {
         background-color: green;
     }
-    td.BIBL
-    {
+
+    td.BIBL {
         background-color: green;
     }
-    td.QUBL
-    {
+
+    td.QUBL {
         background-color: green;
     }
-    td.KIBL
-    {
+
+    td.KIBL {
         background-color: green;
     }
+
+
+
+
+    /*WHITE PIECES*/
+    0 td.PAWH {
+        background-color: red;
+    }
+
+    td.ROWH {
+        background-color: red;
+    }
+
+    td.KNWH {
+        background-color: red;
+    }
+
+    td.BIWH {
+        background-color: red;
+    }
+
+    td.QUWH {
+        background-color: red;
+    }
+
+    td.KIWH {
+        background-color: red;
+    }
+</style>
+
+<body>
+    <?php
+
+    ini_set('display_errors', 'On');
+    ini_set('html_errors', 0);
+
+
+    function CreateEmptyBoard()
+    {
+        $rows = 8;
+        $columns = 8;
+
+        $board = array([$rows], [$columns]);
+
+
+        for ($row = $rows - 1; $row >= 0; $row--) {
+
+            for ($column = 0; $column < $columns; $column++) {
+                if ((($row + $column) % 2) != 0) {
+                    $board[$row][$column] = "0000";
+
+                } else {
+                    $board[$row][$column] = "####";
+                }
+            }
+        }
+
+        return $board;
+    }
+
+    // function tableroInicio()
+    // {
+    //     // CREAR TABLERO
+    //     $rows = 8;
+    //     $columns = 8;
+
+    //     $tablero = array([$rows], [$columns]);
+
+        
+    //         for ($row = $columns - 1; $row >= 0; $row--) 
+    //         {
+
+    //             if ($row != 0 && $row != 1 && $row != 6 && $row != 7) 
+    //             {
+    //                 for ($column = 0; $column < $columns; $column++) 
+    //                 {
+    //                     if ((($row + $column) % 2) != 0) {
+    //                         $tablero[$row][$column] = "0000";
+
+    //                     } else {
+    //                         $tablero[$row][$column] = "####";
+    //                     }
+    //                 }  
+    //             } 
+    //             elseif ($row == 0) 
+    //             {
+    //                 $tablero[$row]="ROBL", "KNBL", "BIBL", "QUBL", "KIBL", "BIBL", "KNBL", "ROBL";
+    //             } 
+    //             elseif ($row == 1) 
+    //             {
+    //                     for ($column = 0; $column < $columns; $column++) {
+    //                         $tablero[$row][$column] = "PABL";
+    //                     }
+    //             } 
+    //             elseif ($row == 6) 
+    //             {
+    //                     for ($column = 0; $column < $columns; $column++) {
+    //                         $tablero[$row][$column] = "PAWH";
+    //                     }
+    //             } 
+    //             elseif ($row == 7) 
+    //                 {
+    //                     array("ROWH", "KNWH", "BIWH", "QUWH", "KIWH", "BIWH", "KNWH", "ROWH");
+    //                 }
+    //         }
+            
+       
+
+
+
+    //     }
+
+        
     
 
 
 
-    /*PIEZAS BLANCAS*/
-    td.PAWH
+    function DrawChessGame($board)
     {
-        background-color: red;
-    }
+        echo "<table>";
 
-    td.ROWH
-    {
-        background-color: red;
-    }
+        for ($i = 0; $i < 8; $i++) {
+            //rows
+            echo "<tr>";
 
-    td.KNWH
-    {
-        background-color: red;
-    }
+            for ($y = 0; $y < 8; $y++) {
+                // columns
+    
+                $square = $board[$i][$y];
 
-    td.BIWH
-    {
-        background-color: red;
-    }
-
-    td.QUWH
-    {
-        background-color: red;
-    }
-
-    td.KIWH
-    {
-        background-color: red;
-    }
-
-    </style>
-
-    <body>
-            <?php
-
-            ini_set('display_errors', 'On');
-            ini_set('html_errors', 0);
-
-
-            function tableroVacio()
-            {
-                // CREAR TABLERO
-                $filas = 8;
-                $columnas = 8;
-
-                $tablero = array([$filas],[$columnas]);
-
-
-                for ($fila=$filas -1; $fila >= 0 ; $fila--) { 
-                    
-                    for ($columna=0; $columna < $columnas; $columna++) { 
-                        if ((($fila + $columna) % 2) != 0) 
-                        {
-                            $tablero[$fila][$columna] = "0000";
-                            
-                        }
-                        else 
-                        {
-                            $tablero[$fila][$columna] = "####";
-                        }
-                    }
+                //  White Square
+                if ($square == "0000") {
+                    echo "<td class=\"white\">";
+                    echo "</td>";
+                }
+                // Black Square
+                elseif ($square == "####") {
+                    echo "<td class=\"black\">";
+                    echo "</td>";
                 }
 
-                return $tablero;
-            }    
-
-            function tableroInicio()
-            {
-                 // CREAR TABLERO
-                 $filas = 8;
-                 $columnas = 8;
- 
-                 $tablero = array([$filas],[$columnas]);
- 
- 
-                 for ($fila=$columnas - 1; $fila >= 0 ; $fila--) { 
-                     
-                    if ($fila == 0) 
-                    {
-                        array("ROBL","KNBL","BIBL","QUBL","KIBL","BIBL","KNBL","ROBL");
-                    }
-                    elseif ($fila == 1) 
-                    {
-                        for ($columna=0; $columna < $columnas; $columna++) { 
-                            $tablero[$fila][$columna] = "PABL";
-                        }
-                    }
-                    elseif ($fila == 6) 
-                    {
-                        for ($columna=0; $columna < $columnas; $columna++) { 
-                            $tablero[$fila][$columna] = "PAWH";
-                        }
-                    }
-                    elseif ($fila == 7)
-                    {
-                        array("ROWH","KNWH","BIWH","QUWH","KIWH","BIWH","KNWH","ROWH");
-                    }
-                    else 
-                    {
-                        for ($columna=0; $columna < $columnas; $columna++) 
-                     { 
-                         if ((($fila + $columna) % 2) != 0) 
-                         {
-                             $tablero[$fila][$columna] = "0000";
-                             
-                         }
-                         else 
-                         {
-                             $tablero[$fila][$columna] = "####";
-                         }
-                     }
-                    }
-
-                     
-                 }
- 
-                 return $tablero;
-            }
-            
-
-
-            function pintarTablero($tablero)
-            {
-                // PINTAR TABLERO
-            echo "<table>";
-
-            for ($i=0; $i < 8; $i++) 
-            { 
-                //FILAS
-                echo "<tr>";
-                
-                    for ($y=0; $y < 8; $y++) { 
-                        // COLUMNAS
-                        
-                        $casilla = $tablero[$i][$y];
-
-                        // Casilla Blanca
-                        if ($casilla == "0000") 
-                        {
-                            echo "<td class=\"blanco\">";
-                            echo "</td>";
-                        }
-                        // Casilla Negra
-                        elseif ($casilla == "####")
-                        {
-                            echo "<td class=\"negro\">";
-                            echo "</td>";
-                        }
-
-                        // Piezas Negras
-                        elseif ($casilla == "PABL") 
-                        {
-                            echo "<td class=\"PABL\">";
-                            echo "</td>";
-                        }
-                        elseif ($casilla == "ROBL") 
-                        {
-                            # code...
-                        }
-                        elseif ($casilla == "KNBL") 
-                        {
-                            # code...
-                        }
-                        elseif ($casilla == "BIBL") 
-                        {
-                            # code...
-                        }
-                        elseif ($casilla == "QUBL") 
-                        {
-                            # code...
-                        }
-                        elseif ($casilla == "KIBL") 
-                        {
-                            # code...
-                        }
-                        // Piezas Blancas
-                        elseif ($casilla == "ROWH") 
-                        {
-                            # code...
-                        }
-                        elseif ($casilla == "KNWH") 
-                        {
-                            # code...
-                        }
-                        elseif ($casilla == "BIWH") 
-                        {
-                            # code...
-                        }
-                        elseif ($casilla == "QUWH") 
-                        {
-                            # code...
-                        }
-                        elseif ($casilla == "KIWH") 
-                        {
-                            # code...
-                        }
-                        elseif ($casilla == "PAWH") 
-                        {
-                            echo "<td class=\"PAWH\">";
-                            echo "</td>";
-                        }
-
-                        
-                    }
-
-                echo "</tr>";   
-                
+                // Piezas Negras
+                elseif ($square == "PABL") {
+                    echo "<td class=\"negro\">";
+                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                    echo "</td>";
+                } elseif ($square == "ROBL") {
+                    echo "<td class=\"negro\">";
+                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                    echo "</td>";
+                } elseif ($square == "KNBL") {
+                    echo "<td class=\"negro\">";
+                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                    echo "</td>";
+                } elseif ($square == "BIBL") {
+                    echo "<td class=\"negro\">";
+                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                    echo "</td>";
+                } elseif ($square == "QUBL") {
+                    echo "<td class=\"negro\">";
+                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                    echo "</td>";
+                } elseif ($square == "KIBL") {
+                    echo "<td class=\"negro\">";
+                    echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
+                    echo "</td>";
                 }
-                echo "</table>";
+                // White Pieces
+                elseif ($square == "ROWH") {
+                    echo "<td class=\"blanco\">";
+                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                    echo "</td>";
+                } elseif ($square == "KNWH") {
+                    echo "<td class=\"blanco\">";
+                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                    echo "</td>";
+                } elseif ($square == "BIWH") {
+                    echo "<td class=\"blanco\">";
+                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                    echo "</td>";
+                } elseif ($square == "QUWH") {
+                    echo "<td class=\"blanco\">";
+                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                    echo "</td>";
+                } elseif ($square == "KIWH") {
+                    echo "<td class=\"blanco\">";
+                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                    echo "</td>";
+                } elseif ($square == "PAWH") {
+                    echo "<td class=\"blanco\">";
+                    echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
+                    echo "</td>";
+                }
+
+
             }
-            
 
-            $tablero = tableroInicio();
-            echo "<div class=\"tablero\">";
-            pintarTablero($tablero);
+            echo "</tr>";
 
-            echo "</div>";
-            ?>
-    </body>
+        }
+        echo "</table>";
+    }
+
+    $emptyBoard = CreateEmptyBoard();
+    echo "<div class=\"board\">";
+    DrawChessGame($emptyBoard);
+    echo "</div>";
+    ?>
+</body>
+
 </html>
