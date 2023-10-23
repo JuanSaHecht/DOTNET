@@ -47,58 +47,7 @@
 
     }
 
-    /*BLACK PIECES*/
-    td.PABL {
-        
-    }
 
-    td.ROBL {
-        background-color: green;
-    }
-
-    td.KNBL {
-        background-color: green;
-    }
-
-    td.BIBL {
-        background-color: green;
-    }
-
-    td.QUBL {
-        background-color: green;
-    }
-
-    td.KIBL {
-        background-color: green;
-    }
-
-
-
-
-    /*WHITE PIECES*/
-    td.PAWH {
-        background-color: red;
-    }
-
-    td.ROWH {
-        background-color: red;
-    }
-
-    td.KNWH {
-        background-color: red;
-    }
-
-    td.BIWH {
-        background-color: red;
-    }
-
-    td.QUWH {
-        background-color: red;
-    }
-
-    td.KIWH {
-        background-color: red;
-    }
 </style>
 
 <body>
@@ -222,22 +171,45 @@
                 $square = $boardArray[$i][$y];
 
                 //  White Square
-                if ($square == "0000") {
+                if ((($i + $y) % 2) != 0) {
                     echo "<td class=\"white\">";
-                    echo "</td>";
                 }
                 // Black Square
-                elseif ($square == "####") {
+                else{
                     echo "<td class=\"black\">";
-                    echo "</td>";
                 }
 
-                // // Black Pieces
-                elseif ($square == "PABL") {
-                    echo "<td>";
-                    echo "<img src=\"Icons/BlackPawn.png\" alt=\"Black King\">";
-                    echo "</td>";
-                } 
+                if ($square != "0000" && $square != "####") {
+                    echo "<img src=\"Icons/".$boardArray[$i][$y].".png\" >";
+                }
+
+                
+
+                echo "</td>";
+            }
+
+            echo "</tr>";
+
+        }
+        echo "</table>";
+    }
+
+    
+    echo "<div class=\"board\">";
+    DrawChessGame("PABL,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000, 0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,ROWH,0000,####,0000,####,0000,####,KIWH");
+    echo "</div>";
+    ?>
+</body>
+
+</html>
+
+
+
+<!-- // // Black Pieces
+                // if ($square == "PABL") {
+                //     echo "<img src=\"Icons/BlackPawn.png\" alt=\"Black King\">";
+                    
+                // } 
                 // elseif ($square == "ROBL") {
                 //     echo "<td class=\"negro\">";
                 //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
@@ -259,12 +231,11 @@
                 //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
                 //     echo "</td>";
                 // }
-                // // White Pieces
+                // White Pieces
                 // elseif ($square == "ROWH") {
-                //     echo "<td class=\"blanco\">";
                 //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                //     echo "</td>";
-                // } elseif ($square == "KNWH") {
+                // } 
+                // elseif ($square == "KNWH") {
                 //     echo "<td class=\"blanco\">";
                 //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
                 //     echo "</td>";
@@ -284,22 +255,59 @@
                 //     echo "<td class=\"blanco\">";
                 //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
                 //     echo "</td>";
-                // }
+                // } -->
 
 
-            }
 
-            echo "</tr>";
-
-        }
-        echo "</table>";
+                <!-- /*BLACK PIECES*/
+    td.PABL {
+        
     }
 
-    
-    echo "<div class=\"board\">";
-    DrawChessGame("0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000, 0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####, ####,0000,####,0000,####,0000,####,0000");
-    echo "</div>";
-    ?>
-</body>
+    td.ROBL {
+        background-color: green;
+    }
 
-</html>
+    td.KNBL {
+        background-color: green;
+    }
+
+    td.BIBL {
+        background-color: green;
+    }
+
+    td.QUBL {
+        background-color: green;
+    }
+
+    td.KIBL {
+        background-color: green;
+    }
+
+
+
+
+    /*WHITE PIECES*/
+    td.PAWH {
+        background-color: red;
+    }
+
+    td.ROWH {
+        background-color: red;
+    }
+
+    td.KNWH {
+        background-color: red;
+    }
+
+    td.BIWH {
+        background-color: red;
+    }
+
+    td.QUWH {
+        background-color: red;
+    }
+
+    td.KIWH {
+        background-color: red;
+    } -->
