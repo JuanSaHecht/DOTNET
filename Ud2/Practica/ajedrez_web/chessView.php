@@ -13,39 +13,37 @@
     }
 
     .board {
-        width: 800px;
-        height: 800px;
+        width: 700px;
+        height: 700px;
     }
 
     table {
-        border: 1px solid green;
+        border: 10px solid #513100;
         width: 100%;
         height: 100%;
         border-collapse: collapse;
     }
 
     td {
-        border: 1px solid green;
         text-align: center;
-        width: 100px;
-        height: 100px;
+        width: 85px;
+        height: 85px;
     }
 
     /*WHITE SQUARE*/
     td.white {
-        background-color: white;
+        background-color: #ffdba2;
     }
 
     /*BLACK SQUARE*/
     td.black {
-        background-color: #1b1b1b;
+        background-color: #714500;
+        /*1b1b1b*/
     }
 
     td img{
-        width: 100px;
-        height: 100px;
-
-
+        width: 85px;
+        height: 85px;
     }
 
 
