@@ -27,8 +27,8 @@
     td {
         border: 1px solid green;
         text-align: center;
-        width: 10px;
-        height: 10px;
+        width: 100px;
+        height: 100px;
     }
 
     /*WHITE SQUARE*/
@@ -38,12 +38,13 @@
 
     /*BLACK SQUARE*/
     td.black {
-        background-color: black;
+        background-color: #1b1b1b;
     }
 
     td img{
-        width: 100%;
-        height: 100%;
+        width: 100px;
+        height: 100px;
+
 
     }
 
@@ -99,7 +100,7 @@
 
     // function tableroInicio()
     // {
-    //     // CREAR TABLERO
+    //     // CREAR TABLERO$initialPiecesWhite =
     //     $rows = 8;
     //     $columns = 8;
 
@@ -150,18 +151,50 @@
     function DrawChessGame($board) //Recieves a string
     {
 
+
+
+        $initialPieces = array("ROBL","KNBL","BIBL","QUBL","KIBL","PABL","ROWH","KNWH","BIWH","QUWH","KIWH","PAWH");
+         
+        // $deadPiecesWhite;
+        // $deadPiecesBlack;
+
+        $alivePieces = 0;
+
         $text = explode(",", $board);
         $position = 0;
-        for ($i=0; $i < 7; $i++) { 
+        for ($i=0; $i < 8; $i++) { 
             for ($y=0; $y < 8; $y++) { 
                 $boardArray[$i][$y] = $text[$position];
                 $position ++;
             }
         }        
 
+        for ($i = 0; $i < 7; $i++) 
+        {
+
+            for ($y = 0; $y < 8; $y++) 
+            {
+        
+                $square = $boardArray[$i][$y];
+
+                if ($square != "0000" && $square != "####") 
+                {
+                    $alivePieces ++;
+                }
+
+            }
+
+
+        }
+
+
+
+
+
         echo "<table>";
 
-        for ($i = 0; $i < 7; $i++) {
+        for ($i = 0; $i < 8; $i++) 
+        {
             //rows
             echo "<tr>";
 
@@ -181,6 +214,7 @@
 
                 if ($square != "0000" && $square != "####") {
                     echo "<img src=\"Icons/".$boardArray[$i][$y].".png\" >";
+                
                 }
 
                 
@@ -196,7 +230,7 @@
 
     
     echo "<div class=\"board\">";
-    DrawChessGame("PABL,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000, 0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,ROWH,0000,####,0000,####,0000,####,KIWH");
+    DrawChessGame("ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH");
     echo "</div>";
     ?>
 </body>
