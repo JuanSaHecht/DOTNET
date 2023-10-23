@@ -13,21 +13,32 @@
     }
 
     .board {
-        width: 700px;
-        height: 700px;
+        position: relative;
+        left: 100px;
+        width: 600px;
+        height: 900px;
+        background-color: orange;
     }
 
-    table {
-        border: 10px solid #513100;
+    table.dead
+    {
         width: 100%;
-        height: 100%;
+        border-collapse: collapse;
+        
+    }
+
+    table.board{
+        border: 10px solid #513100;
+        width: 100px;
+        height: 400px;
         border-collapse: collapse;
     }
 
     td {
+        padding: 0;
         text-align: center;
-        width: 85px;
-        height: 85px;
+        width: 70px;
+        height: 70px;
     }
 
     /*WHITE SQUARE*/
@@ -41,9 +52,17 @@
         /*1b1b1b*/
     }
 
+    td.dead
+    {
+        background-color: #513100;
+        
+        width: 70px;
+        height: 70px;
+    }
+
     td img{
-        width: 85px;
-        height: 85px;
+        width: 70px;
+        height: 70px;
     }
 
 
@@ -148,9 +167,6 @@
 
     function DrawChessGame($board) //Recieves a string
     {
-
-
-
         $initialPieces = array("ROBL","KNBL","BIBL","QUBL","KIBL","PABL","ROWH","KNWH","BIWH","QUWH","KIWH","PAWH");
          
         // $deadPiecesWhite;
@@ -167,29 +183,25 @@
             }
         }        
 
-        for ($i = 0; $i < 7; $i++) 
+        echo "<table \"dead\">";
+        for ($i = 0; $i < 2; $i++) 
         {
+
+            echo "<tr>";
 
             for ($y = 0; $y < 8; $y++) 
             {
-        
-                $square = $boardArray[$i][$y];
-
-                if ($square != "0000" && $square != "####") 
-                {
-                    $alivePieces ++;
-                }
-
+                echo "<td class=\"dead\">";
+                echo "</td>";
             }
 
+            echo "</tr>";
 
         }
+        echo "</table>";
 
 
-
-
-
-        echo "<table>";
+        echo "<table class=\"board\"";
 
         for ($i = 0; $i < 8; $i++) 
         {
@@ -214,9 +226,26 @@
                     echo "<img src=\"Icons/".$boardArray[$i][$y].".png\" >";
                 
                 }
-
                 
+                echo "</td>";
+            }
 
+            echo "</tr>";
+
+        }
+        echo "</table>";
+
+
+
+        echo "<table \"dead\">";
+        for ($i = 0; $i < 2; $i++) 
+        {
+
+            echo "<tr>";
+
+            for ($y = 0; $y < 8; $y++) 
+            {
+                echo "<td class=\"dead\">";
                 echo "</td>";
             }
 
