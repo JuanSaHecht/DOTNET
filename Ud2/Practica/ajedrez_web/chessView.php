@@ -14,20 +14,20 @@
 
     .board {
         position: relative;
-        left: 100px;
+        left: 30%;
         width: 600px;
         height: 900px;
-        background-color: orange;
     }
 
-    table.dead
-    {
+    table.dead {
+        position: relative;
         width: 100%;
         border-collapse: collapse;
-        
+
     }
 
-    table.board{
+    table.board {
+        position: static;
         border: 10px solid #513100;
         width: 100px;
         height: 400px;
@@ -52,20 +52,17 @@
         /*1b1b1b*/
     }
 
-    td.dead
-    {
+    td.dead {
         background-color: #513100;
-        
+
         width: 70px;
         height: 70px;
     }
 
-    td img{
+    td img {
         width: 70px;
         height: 70px;
     }
-
-
 </style>
 
 <body>
@@ -79,61 +76,61 @@
     // {
     //     $rows = 8;
     //     $columns = 8;
-
+    
     //     $board = array();
     //     $position = 0;
-
+    
     //     $text = "";
-
+    
     //     for ($row = $rows - 1; $row >= 0; $row--) {
-
+    
     //         for ($column = 0; $column < $columns; $column++) {
     //             if ((($row + $column) % 2) != 0) {
     //                 $text += "0000";
-
+    
     //             } else {
     //                 $text += "####,";
     //             }
-
+    
     //         }
     //     }
-
+    
     //     return $text;
     // }
-
+    
     // function ArrayToString($array)
     // {
     //     $string = "";
-
+    
     //     for( $i = 0; $i < count($array); $i++ )
     //     {
     //        for ($y=0; $y < count($array[0]); $y++) { 
     //         $string += $array[$i][$y];
     //        } 
     //     }
-
+    
     //     return $string;
     // }
-
+    
     // function tableroInicio()
     // {
     //     // CREAR TABLERO$initialPiecesWhite =
     //     $rows = 8;
     //     $columns = 8;
-
+    
     //     $tablero = array([$rows], [$columns]);
+    
 
-        
     //         for ($row = $columns - 1; $row >= 0; $row--) 
     //         {
-
+    
     //             if ($row != 0 && $row != 1 && $row != 6 && $row != 7) 
     //             {
     //                 for ($column = 0; $column < $columns; $column++) 
     //                 {
     //                     if ((($row + $column) % 2) != 0) {
     //                         $tablero[$row][$column] = "0000";
-
+    
     //                     } else {
     //                         $tablero[$row][$column] = "####";
     //                     }
@@ -161,36 +158,85 @@
     //                 }
     //         }
     //     }
+    
 
-        
+
+    function countPieces($board) // recieves a string
+    {
+        // array asociado(claves) con contadores de piezas 
+        $whitePawns = 8;
+        $whiteRooks = 2;
+        $whiteKnights = 2;
+        $whiteBishops = 2;
+        $whiteQueen = 1;
+        $whiteKing = 1;
+
+        $blackPawns = 8;
+        $blackRooks = 2;
+        $blackKnights = 2;
+        $blackBishops = 2;
+        $blackQueen = 1;
+        $blackKing = 1;
+
+        $text = explode(",", $board);
+        $piecesAlive = array(
+            "ROBL" => 0,
+            "KNBL" => 0,
+            "BIBL" => 0,
+            "QUBL" => 0,
+            "KIBL" => 0,
+            "PABL" => 0,
+            "ROWH" => 0,
+            "KNWH" => 0,
+            "BIWH" => 0,
+            "QUWH" => 0,
+            "KIWH" => 0,
+            "PAWH" => 0,
+        );
+
+        for ($i = 0; $i < count($text); $i++) {
+
+            if(array_key_exists($text[$i],$piecesAlive))
+            {
+                $piecesAlive[$text[$i]]++;
+            }
+        }
+
+        return $piecesAlive;
+    }
 
 
     function DrawChessGame($board) //Recieves a string
     {
-        $initialPieces = array("ROBL","KNBL","BIBL","QUBL","KIBL","PABL","ROWH","KNWH","BIWH","QUWH","KIWH","PAWH");
-         
-        // $deadPiecesWhite;
-        // $deadPiecesBlack;
+        $initialPieces = array("ROBL", "KNBL", "BIBL", "QUBL", "KIBL", "PABL", "ROBL", "KNBL", "BIBL", "ROWH", "KNWH", "BIWH", "QUWH", "KIWH", "ROWH", "KNWH", "BIWH", "PAWH");
 
-        $alivePieces = 0;
 
+
+
+        // Converts string into an array and then the array into a matrix
         $text = explode(",", $board);
         $position = 0;
-        for ($i=0; $i < 8; $i++) { 
-            for ($y=0; $y < 8; $y++) { 
+        for ($i = 0; $i < 8; $i++) {
+            for ($y = 0; $y < 8; $y++) {
                 $boardArray[$i][$y] = $text[$position];
-                $position ++;
+                $position++;
             }
-        }        
+        }
 
+
+
+
+
+
+
+
+        // show dead white pieces table 
         echo "<table \"dead\">";
-        for ($i = 0; $i < 2; $i++) 
-        {
+        for ($i = 0; $i < 2; $i++) {
 
             echo "<tr>";
 
-            for ($y = 0; $y < 8; $y++) 
-            {
+            for ($y = 0; $y < 8; $y++) {
                 echo "<td class=\"dead\">";
                 echo "</td>";
             }
@@ -201,10 +247,12 @@
         echo "</table>";
 
 
+
+
+        // show board
         echo "<table class=\"board\"";
 
-        for ($i = 0; $i < 8; $i++) 
-        {
+        for ($i = 0; $i < 8; $i++) {
             //rows
             echo "<tr>";
 
@@ -218,15 +266,15 @@
                     echo "<td class=\"white\">";
                 }
                 // Black Square
-                else{
+                else {
                     echo "<td class=\"black\">";
                 }
 
                 if ($square != "0000" && $square != "####") {
-                    echo "<img src=\"Icons/".$boardArray[$i][$y].".png\" >";
-                
+                    echo "<img src=\"Icons/" . $boardArray[$i][$y] . ".png\" >";
+
                 }
-                
+
                 echo "</td>";
             }
 
@@ -237,15 +285,16 @@
 
 
 
+        // show dead black pieces table
         echo "<table \"dead\">";
-        for ($i = 0; $i < 2; $i++) 
-        {
+        $shownPieces = 0;
+        for ($i = 0; $i < 2; $i++) {
 
             echo "<tr>";
 
-            for ($y = 0; $y < 8; $y++) 
-            {
+            for ($y = 0; $y < 8; $y++) {
                 echo "<td class=\"dead\">";
+
                 echo "</td>";
             }
 
@@ -255,10 +304,14 @@
         echo "</table>";
     }
 
-    
+
     echo "<div class=\"board\">";
     DrawChessGame("ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH");
     echo "</div>";
+
+
+    var_dump(countPieces("ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH"));
+
     ?>
 </body>
 
@@ -320,7 +373,7 @@
 
 
 
-                <!-- /*BLACK PIECES*/
+<!-- /*BLACK PIECES*/
     td.PABL {
         
     }
@@ -372,3 +425,57 @@
     td.KIWH {
         background-color: red;
     } -->
+
+
+<!-- // $alivePieces = array();
+        // $numAlivePieces = 0;
+
+        // // Counts how many dead peaces are
+        // for ($i=0; $i < count($text); $i++) 
+        // {   
+        //     if ($text[$i] != "0000" && $text[$i] != "####") 
+        //     {
+        //         $numAlivePieces++;  
+        //         $alivePieces = $text[$i];
+        //     }
+        // }
+        
+        // $deadPieces = array();
+
+        // // Check if each position of array equals to initialPieces
+
+        // if (count($alivePieces) != count($initialPieces))
+        // {
+        //     for ($i=0; $i < count($initialPieces); $i++) 
+        // { 
+        //     $isOnArray = false;
+        //     for ($y=0; $y < count($alivePieces); $y++) 
+        //     { 
+        //         if ($initialPieces[$y] == $alivePieces[$i]) 
+        //         {
+        //             $isOnArray = true;
+        //         }
+        //     }
+        //     if (!$isOnArray) 
+        //     {
+        //         $deadPieces = $initialPieces[$i];
+        //     }
+        // }
+        // } -->
+
+<!-- // Know if deadPieces are White or Black
+
+$deadPiecesWhite = array();
+$deadPiecesBlack = array();
+
+foreach ($deadPieces as $piece) 
+{
+    if (substr($piece,2,4) == "WH" )
+    {
+        $deadPiecesWhite[] = $piece;
+    }
+    elseif (substr($piece,2,4) == "BL") 
+    {
+        $deadPiecesBlack[] = $piece;
+    }
+} -->
