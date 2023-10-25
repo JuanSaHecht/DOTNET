@@ -6,65 +6,7 @@
     <title>Document</title>
 </head>
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    .board {
-        position: relative;
-        left: 30%;
-        width: 600px;
-        height: 900px;
-    }
-
-    table.dead {
-        position: relative;
-        width: 100%;
-        border-collapse: collapse;
-        
-
-    }
-
-    table.board {
-        position: static;
-        border: 10px solid #513100;
-        width: 100px;
-        height: 400px;
-        border-collapse: collapse;
-    }
-
-    td {
-        padding: 0;
-        text-align: center;
-        width: 70px;
-        height: 70px;
-    }
-
-    /*WHITE SQUARE*/
-    td.white {
-        background-color: #ffdba2;
-    }
-
-    /*BLACK SQUARE*/
-    td.black {
-        background-color: #714500;
-        /*1b1b1b*/
-    }
-
-    td.dead {
-        background-color: #714500;
-
-        width: 70px;
-        height: 70px;
-    }
-
-    td img {
-        width: 70px;
-        height: 70px;
-    }
-</style>
+<link rel="stylesheet" href="chess_game_styles.css">
 
 <body>
     <?php
@@ -286,14 +228,6 @@
     DrawChessGame($board);
     echo "</div>";
 
-
-    var_dump(deadPiecesWhite($board));
-    echo "<br>";
-    var_dump(deadPiecesBlack($board));
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    var_dump(deadPiecesWhite($board));
     ?>
 </body>
 
