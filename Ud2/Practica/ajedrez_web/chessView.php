@@ -163,42 +163,31 @@
 
     function countPieces($board) // recieves a string
     {
-        // array asociado(claves) con contadores de piezas 
-        $whitePawns = 8;
-        $whiteRooks = 2;
-        $whiteKnights = 2;
-        $whiteBishops = 2;
-        $whiteQueen = 1;
-        $whiteKing = 1;
+        // $whitePawns = 8;
+        // $whiteRooks = 2;
+        // $whiteKnights = 2;
+        // $whiteBishops = 2;
+        // $whiteQueen = 1;
+        // $whiteKing = 1;
 
-        $blackPawns = 8;
-        $blackRooks = 2;
-        $blackKnights = 2;
-        $blackBishops = 2;
-        $blackQueen = 1;
-        $blackKing = 1;
+        // $blackPawns = 8;
+        // $blackRooks = 2;
+        // $blackKnights = 2;
+        // $blackBishops = 2;
+        // $blackQueen = 1;
+        // $blackKing = 1;
 
         $text = explode(",", $board);
-        $piecesAlive = array(
-            "ROBL" => 0,
-            "KNBL" => 0,
-            "BIBL" => 0,
-            "QUBL" => 0,
-            "KIBL" => 0,
-            "PABL" => 0,
-            "ROWH" => 0,
-            "KNWH" => 0,
-            "BIWH" => 0,
-            "QUWH" => 0,
-            "KIWH" => 0,
-            "PAWH" => 0,
-        );
+        $piecesAlive = array();
 
         for ($i = 0; $i < count($text); $i++) {
 
             if(array_key_exists($text[$i],$piecesAlive))
             {
                 $piecesAlive[$text[$i]]++;
+            }else 
+            {
+                $piecesAlive[$text[$i]] = 1;
             }
         }
 
