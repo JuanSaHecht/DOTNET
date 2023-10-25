@@ -215,9 +215,7 @@
 
 
     function DrawChessGame($board) //Recieves a string
-    {
-        // $initialPieces = array("ROBL", "KNBL", "BIBL", "QUBL", "KIBL", "PABL", "ROBL", "KNBL", "BIBL", "ROWH", "KNWH", "BIWH", "QUWH", "KIWH", "ROWH", "KNWH", "BIWH", "PAWH");
-    
+    {    
         // Converts string into an array and then the array into a matrix
         $text = explode(",", $board);
         $position = 0;
