@@ -13,75 +13,87 @@
 
     ini_set('display_errors', 'On');
     ini_set('html_errors', 0);
-    
+
     // counts how many dead white pieces are
-        function deadPiecesWhite($board) // recieves a string with state of board
-        {
-            $alivePieces = countPieces($board);
+    function deadPiecesWhite($board) // recieves a string with state of board
+    {
+        $alivePieces = countPieces($board);
 
-            $maxPiecesAlive = array(
-                "ROWH" => 2,
-                "KNWH" => 2,
-                "BIWH" => 2,
-                "QUWH" => 1,
-                "KIWH" => 1,
-                "PAWH" => 8,
-            );
+        $maxPiecesAlive = array(
+            "ROWH" => 2,
+            "KNWH" => 2,
+            "BIWH" => 2,
+            "QUWH" => 1,
+            "KIWH" => 1,
+            "PAWH" => 8,
+        );
 
-            $deadPieces = array();
+        $deadPieces = array();
 
-            foreach ($alivePieces as $key => $value) {
-                if (array_key_exists($key,$maxPiecesAlive) && substr($key,2) == "WH") {
-                    $diference = $maxPiecesAlive[$key] - $value;
-                    if ($diference != 0) {
-                        $deadPieces[$key] = $diference;
-                    }
+        foreach ($alivePieces as $key => $value) {
+            if (array_key_exists($key, $maxPiecesAlive) && substr($key, 2) == "WH") {
+                $diference = $maxPiecesAlive[$key] - $value;
+                if ($diference != 0) {
+                    $deadPieces[$key] = $diference;
                 }
             }
-
-            return $deadPieces;
         }
 
-        // counts how many dead black pieces are
-        function deadPiecesBlack($board) // recieves a string with state of board
-        {
-            $alivePieces = countPieces($board);
+        return $deadPieces;
+    }
 
-            $maxPiecesAlive = array(
-                "ROBL" => 2,
-                "KNBL" => 2,
-                "BIBL" => 2,
-                "QUBL" => 1,
-                "KIBL" => 1,
-                "PABL" => 8,
-            );
+    // counts how many dead black pieces are
+    function deadPiecesBlack($board) // recieves a string with state of board
+    {
+        $alivePieces = countPieces($board);
 
-            $deadPieces = array();
+        $maxPiecesAlive = array(
+            "ROBL" => 2,
+            "KNBL" => 2,
+            "BIBL" => 2,
+            "QUBL" => 1,
+            "KIBL" => 1,
+            "PABL" => 8,
+        );
+        $deadPieces = array();
 
-            foreach ($alivePieces as $key => $value) {
-                if (array_key_exists($key,$maxPiecesAlive) && substr($key,2) == "BL") {
-                    $diference = $maxPiecesAlive[$key] - $value;
-                    if ($diference != 0) {
-                        $deadPieces[$key] = $diference;
-                    }
+        foreach ($alivePieces as $key => $value) {
+            if (array_key_exists($key,$maxPiecesAlive) && substr($key,2) == "BL" && $maxPiecesAlive [$key] - $alivePieces[$key] == 0) {
+                $deadPieces[$key] = 0;
+            }elseif (array_key_exists($key, $maxPiecesAlive) && substr($key, 2) == "BL") {
+                $diference = $maxPiecesAlive[$key] - $value;
+                if ($diference != 0) {
+                    $deadPieces[$key] = $diference;
                 }
             }
-
-            return $deadPieces;
         }
+        return $deadPieces;
+    }
 
-        // Counts all the pieces on the board
+    // Counts all the pieces on the board
     function countPieces($board) // recieves a string
-    {  
+    {
         $text = explode(",", $board);
-        $piecesAlive = array();
+        $piecesAlive = array(
+            "ROBL" => 0,
+            "KNBL" => 0,
+            "BIBL" => 0,
+            "QUBL" => 0,
+            "KIBL" => 0,
+            "PABL" => 0,
+            "ROWH" => 0,
+            "KNWH" => 0,
+            "BIWH" => 0,
+            "QUWH" => 0,
+            "KIWH" => 0,
+            "PAWH" => 0,
+
+        );
 
         for ($i = 0; $i < count($text); $i++) {
 
             if (array_key_exists($text[$i], $piecesAlive)) {
                 $piecesAlive[$text[$i]]++;
-            } else {
-                $piecesAlive[$text[$i]] = 1;
             }
         }
 
@@ -96,7 +108,7 @@
         $piecesArray = array();
 
         foreach ($deadPieces as $key => $value) {
-            for ($i=0; $i < $value; $i++) { 
+            for ($i = 0; $i < $value; $i++) {
                 array_push($piecesArray, $key);
             }
         }
@@ -112,9 +124,9 @@
             for ($y = 0; $y < 8; $y++) {
                 echo "<td class=\"dead\">";
 
-                    if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
-                        echo "<img src=\"Icons/" . $piecesArray[$positionPiecesShown]. ".png\" >";
-                        $positionPiecesShown++;
+                if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
+                    echo "<img src=\"Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
+                    $positionPiecesShown++;
                 }
 
                 echo "</td>";
@@ -128,13 +140,13 @@
 
     // show dead black pieces table 
     function deadTableBlack($board) // recieves a string with state of board
-    { 
+    {
         $deadPieces = deadPiecesBlack($board);
 
         $piecesArray = array();
 
         foreach ($deadPieces as $key => $value) {
-            for ($i=0; $i < $value; $i++) { 
+            for ($i = 0; $i < $value; $i++) {
                 array_push($piecesArray, $key);
             }
         }
@@ -150,9 +162,9 @@
             for ($y = 0; $y < 8; $y++) {
                 echo "<td class=\"dead\">";
 
-                    if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
-                        echo "<img src=\"Icons/" . $piecesArray[$positionPiecesShown]. ".png\" >";
-                        $positionPiecesShown++;
+                if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
+                    echo "<img src=\"Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
+                    $positionPiecesShown++;
                 }
 
                 echo "</td>";
@@ -204,6 +216,8 @@
 
     function DrawChessGame($board) //Recieves a string
     {
+        // $initialPieces = array("ROBL", "KNBL", "BIBL", "QUBL", "KIBL", "PABL", "ROBL", "KNBL", "BIBL", "ROWH", "KNWH", "BIWH", "QUWH", "KIWH", "ROWH", "KNWH", "BIWH", "PAWH");
+    
         // Converts string into an array and then the array into a matrix
         $text = explode(",", $board);
         $position = 0;
@@ -220,8 +234,7 @@
 
         deadTableBlack($board);
     }
-    
-    $board = "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,0000,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,####,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,0000,PABL,ROBL,KNBL,BIBL,0000,KIBL,BIBL,KNBL,ROBL";
+    $board = "ROWH,0000,BIWH,0000,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,####,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,0000,PABL,ROBL,0000,BIBL,0000,KIBL,0000,KNBL,ROBL";
 
     echo "<div class=\"board\">";
     DrawChessGame($board);
@@ -231,6 +244,3 @@
 </body>
 
 </html>
-
-
-
