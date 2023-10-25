@@ -23,6 +23,7 @@
         position: relative;
         width: 100%;
         border-collapse: collapse;
+        
 
     }
 
@@ -53,7 +54,7 @@
     }
 
     td.dead {
-        background-color: #513100;
+        background-color: #714500;
 
         width: 70px;
         height: 70px;
@@ -71,6 +72,7 @@
     ini_set('display_errors', 'On');
     ini_set('html_errors', 0);
     
+    // counts how many dead white pieces are
         function deadPiecesWhite($board) // recieves a string with state of board
         {
             $alivePieces = countPieces($board);
@@ -98,6 +100,7 @@
             return $deadPieces;
         }
 
+        // counts how many dead black pieces are
         function deadPiecesBlack($board) // recieves a string with state of board
         {
             $alivePieces = countPieces($board);
@@ -114,7 +117,7 @@
             $deadPieces = array();
 
             foreach ($alivePieces as $key => $value) {
-                if (array_key_exists($key,$maxPiecesAlive) && substr($key,2) == "WH") {
+                if (array_key_exists($key,$maxPiecesAlive) && substr($key,2) == "BL") {
                     $diference = $maxPiecesAlive[$key] - $value;
                     if ($diference != 0) {
                         $deadPieces[$key] = $diference;
@@ -125,7 +128,7 @@
             return $deadPieces;
         }
 
-
+        // Counts all the pieces on the board
     function countPieces($board) // recieves a string
     {  
         $text = explode(",", $board);
@@ -143,11 +146,22 @@
         return $piecesAlive;
     }
 
-
+    // show dead white pieces table 
     function deadTableWhite($board) // recieves a string with state of board
     {
         $deadPieces = deadPiecesWhite($board);
-        // show dead white pieces table 
+
+        $piecesArray = array();
+
+        foreach ($deadPieces as $key => $value) {
+            for ($i=0; $i < $value; $i++) { 
+                array_push($piecesArray, $key);
+            }
+        }
+
+
+        $positionPiecesShown = 0;
+
         echo "<table \"dead\">";
         for ($i = 0; $i < 2; $i++) {
 
@@ -156,8 +170,9 @@
             for ($y = 0; $y < 8; $y++) {
                 echo "<td class=\"dead\">";
 
-                foreach ($deadPieces as $key => $value) {
-                    echo "<img src=\"Icons/" . $key . ".png\" >";
+                    if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
+                        echo "<img src=\"Icons/" . $piecesArray[$positionPiecesShown]. ".png\" >";
+                        $positionPiecesShown++;
                 }
 
                 echo "</td>";
@@ -169,9 +184,22 @@
         echo "</table>";
     }
 
+    // show dead black pieces table 
     function deadTableBlack($board) // recieves a string with state of board
-    {
-        // show dead white pieces table 
+    { 
+        $deadPieces = deadPiecesBlack($board);
+
+        $piecesArray = array();
+
+        foreach ($deadPieces as $key => $value) {
+            for ($i=0; $i < $value; $i++) { 
+                array_push($piecesArray, $key);
+            }
+        }
+
+
+        $positionPiecesShown = 0;
+
         echo "<table \"dead\">";
         for ($i = 0; $i < 2; $i++) {
 
@@ -179,7 +207,12 @@
 
             for ($y = 0; $y < 8; $y++) {
                 echo "<td class=\"dead\">";
-                deadPiecesBlack($board);
+
+                    if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
+                        echo "<img src=\"Icons/" . $piecesArray[$positionPiecesShown]. ".png\" >";
+                        $positionPiecesShown++;
+                }
+
                 echo "</td>";
             }
 
@@ -247,7 +280,7 @@
 
         deadTableBlack($board);
     }
-    $board = "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,PAWH,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL";
+    $board = "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,0000,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,####,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,0000,PABL,ROBL,KNBL,BIBL,0000,KIBL,BIBL,KNBL,ROBL";
 
     echo "<div class=\"board\">";
     DrawChessGame($board);
@@ -257,6 +290,10 @@
     var_dump(deadPiecesWhite($board));
     echo "<br>";
     var_dump(deadPiecesBlack($board));
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    var_dump(deadPiecesWhite($board));
     ?>
 </body>
 
@@ -264,163 +301,3 @@
 
 
 
-<!-- // // Black Pieces
-                // if ($square == "PABL") {
-                //     echo "<img src=\"Icons/BlackPawn.png\" alt=\"Black King\">";
-                    
-                // } 
-                // elseif ($square == "ROBL") {
-                //     echo "<td class=\"negro\">";
-                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                //     echo "</td>";
-                // } elseif ($square == "KNBL") {
-                //     echo "<td class=\"negro\">";
-                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                //     echo "</td>";
-                // } elseif ($square == "BIBL") {
-                //     echo "<td class=\"negro\">";
-                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                //     echo "</td>";
-                // } elseif ($square == "QUBL") {
-                //     echo "<td class=\"negro\">";
-                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                //     echo "</td>";
-                // } elseif ($square == "KIBL") {
-                //     echo "<td class=\"negro\">";
-                //     echo "<img src=\"Icons/BlackKing.png\" alt=\"Black King\">";
-                //     echo "</td>";
-                // }
-                // White Pieces
-                // elseif ($square == "ROWH") {
-                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                // } 
-                // elseif ($square == "KNWH") {
-                //     echo "<td class=\"blanco\">";
-                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                //     echo "</td>";
-                // } elseif ($square == "BIWH") {
-                //     echo "<td class=\"blanco\">";
-                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                //     echo "</td>";
-                // } elseif ($square == "QUWH") {
-                //     echo "<td class=\"blanco\">";
-                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                //     echo "</td>";
-                // } elseif ($square == "KIWH") {
-                //     echo "<td class=\"blanco\">";
-                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                //     echo "</td>";
-                // } elseif ($square == "PAWH") {
-                //     echo "<td class=\"blanco\">";
-                //     echo "<img src=\"Icons/WhiteRook.png\" alt=\"White Rook\">";
-                //     echo "</td>";
-                // } -->
-
-
-
-<!-- /*BLACK PIECES*/
-    td.PABL {
-        
-    }
-
-    td.ROBL {
-        background-color: green;
-    }
-
-    td.KNBL {
-        background-color: green;
-    }
-
-    td.BIBL {
-        background-color: green;
-    }
-
-    td.QUBL {
-        background-color: green;
-    }
-
-    td.KIBL {
-        background-color: green;
-    }
-
-
-
-
-    /*WHITE PIECES*/
-    td.PAWH {
-        background-color: red;
-    }
-
-    td.ROWH {
-        background-color: red;
-    }
-
-    td.KNWH {
-        background-color: red;
-    }
-
-    td.BIWH {
-        background-color: red;
-    }
-
-    td.QUWH {
-        background-color: red;
-    }
-
-    td.KIWH {
-        background-color: red;
-    } -->
-
-
-<!-- // $alivePieces = array();
-        // $numAlivePieces = 0;
-
-        // // Counts how many dead peaces are
-        // for ($i=0; $i < count($text); $i++) 
-        // {   
-        //     if ($text[$i] != "0000" && $text[$i] != "####") 
-        //     {
-        //         $numAlivePieces++;  
-        //         $alivePieces = $text[$i];
-        //     }
-        // }
-        
-        // $deadPieces = array();
-
-        // // Check if each position of array equals to initialPieces
-
-        // if (count($alivePieces) != count($initialPieces))
-        // {
-        //     for ($i=0; $i < count($initialPieces); $i++) 
-        // { 
-        //     $isOnArray = false;
-        //     for ($y=0; $y < count($alivePieces); $y++) 
-        //     { 
-        //         if ($initialPieces[$y] == $alivePieces[$i]) 
-        //         {
-        //             $isOnArray = true;
-        //         }
-        //     }
-        //     if (!$isOnArray) 
-        //     {
-        //         $deadPieces = $initialPieces[$i];
-        //     }
-        // }
-        // } -->
-
-<!-- // Know if deadPieces are White or Black
-
-$deadPiecesWhite = array();
-$deadPiecesBlack = array();
-
-foreach ($deadPieces as $piece) 
-{
-    if (substr($piece,2,4) == "WH" )
-    {
-        $deadPiecesWhite[] = $piece;
-    }
-    elseif (substr($piece,2,4) == "BL") 
-    {
-        $deadPiecesBlack[] = $piece;
-    }
-} -->
