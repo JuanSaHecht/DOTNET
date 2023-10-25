@@ -204,8 +204,6 @@
 
     function DrawChessGame($board) //Recieves a string
     {
-        // $initialPieces = array("ROBL", "KNBL", "BIBL", "QUBL", "KIBL", "PABL", "ROBL", "KNBL", "BIBL", "ROWH", "KNWH", "BIWH", "QUWH", "KIWH", "ROWH", "KNWH", "BIWH", "PAWH");
-    
         // Converts string into an array and then the array into a matrix
         $text = explode(",", $board);
         $position = 0;
@@ -222,6 +220,7 @@
 
         deadTableBlack($board);
     }
+    
     $board = "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,0000,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,####,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,0000,PABL,ROBL,KNBL,BIBL,0000,KIBL,BIBL,KNBL,ROBL";
 
     echo "<div class=\"board\">";
