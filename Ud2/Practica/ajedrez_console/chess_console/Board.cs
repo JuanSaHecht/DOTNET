@@ -1,3 +1,5 @@
+using System.IO.Pipes;
+using System.Runtime.InteropServices;
 using ChessAPI.Model;
 
 namespace ChessAPI
@@ -63,7 +65,17 @@ namespace ChessAPI
         //en otras clases si lo consideras necesario...
         private void _Move(Movement movement)
         {
+            Piece[,] aux;
 
+            int fromRow = movement.GetFromBoardPositionRow();
+            int fromColumn = movement.GetFromBoardPositionColumn();
+            int toRow = movement.GetToBoardPositionRow();
+            int toColumn = movement.GetToBoardPositionColumn();
+
+
+            board[toRow,toColumn] = board[fromRow,fromColumn];
+            
+            board[fromRow,fromColumn] = null;
         }
 
         // TODO Practica 02_4

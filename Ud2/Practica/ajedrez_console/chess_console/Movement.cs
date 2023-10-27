@@ -23,10 +23,26 @@ namespace ChessAPI
                 
             }
                 return false;    
-    
-            
+        }
 
-            
+        public int GetFromBoardPositionRow ()
+        {
+           return this._fromBoardPosition.GetRow();
+        }
+
+        public int GetFromBoardPositionColumn ()
+        {
+            return this._fromBoardPosition.GetColumn();
+        }
+
+        public int GetToBoardPositionRow ()
+        {
+            return this._toBoardPosition.GetRow();
+        }
+
+        public int GetToBoardPositionColumn ()
+        {
+            return this._toBoardPosition.GetColumn();
         }
     }
 }

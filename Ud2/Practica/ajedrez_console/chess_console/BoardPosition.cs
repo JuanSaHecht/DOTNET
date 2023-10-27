@@ -64,5 +64,17 @@ namespace ChessAPI
             }
             return false;
         }
+
+
+
+        public int GetRow()
+        {
+            return this._row;
+        }
+
+        public int GetColumn()
+        {
+            return this._column;
+        }
     }
 }
