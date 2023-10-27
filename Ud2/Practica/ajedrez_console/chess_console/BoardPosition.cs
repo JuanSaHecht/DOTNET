@@ -1,3 +1,5 @@
+using Microsoft.Win32.SafeHandles;
+
 namespace ChessAPI
 {
     /// TODO Practica 02_2
@@ -51,6 +53,16 @@ namespace ChessAPI
                 _column = column;
             else
                 throw new ArgumentOutOfRangeException(nameof(column),"The valid range is between 0 and 7.");
+        }
+
+
+        public bool Isvalid()
+        {
+            if (this._row <= 0 && this._column >= 7)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

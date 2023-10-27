@@ -17,7 +17,16 @@ namespace ChessAPI
         /// en esta clase.
         public bool IsValid()
         {
-            return true;
+            if (_fromBoardPosition.Isvalid() && _toBoardPosition.Isvalid())
+            {
+                    return true;
+                
+            }
+                return false;    
+    
+            
+
+            
         }
     }
 }
