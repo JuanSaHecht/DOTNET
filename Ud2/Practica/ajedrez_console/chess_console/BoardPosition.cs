@@ -58,7 +58,7 @@ namespace ChessAPI
 
         public bool Isvalid()
         {
-            if (this._row <= 0 && this._column >= 7)
+            if (this._row >= 0 && this._column <= 7)
             {
                 return true;
             }
