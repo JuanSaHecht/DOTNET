@@ -32,13 +32,6 @@ namespace ChessAPI
             int toRow = movement.GetToBoardPositionRow();
             int toColumn = movement.GetToBoardPositionColumn();
 
-            Console.WriteLine("DegugMove");
-            Console.WriteLine(fromRow);
-            Console.WriteLine(fromColumn);
-            Console.WriteLine(toRow);
-            Console.WriteLine(toColumn);
-            Console.WriteLine("DegugMove1");
-
             this.board.Move(movement);
 
 
