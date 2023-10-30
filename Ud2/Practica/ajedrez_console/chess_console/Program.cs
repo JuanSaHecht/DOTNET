@@ -10,10 +10,10 @@
             chess.DrawBoard();
             chess.TryToMove();
             chess.DrawBoard();
-            // var code = chess.GetBoardAsStringToChessWeb();
-            // Console.WriteLine(code);
+            var code = chess.GetBoardAsStringToChessWeb();
+            Console.WriteLine(code);
             Console.WriteLine("End. Chess Console Test...");
-            // Console.WriteLine(board.GetBoardState());
+            Console.WriteLine(board.GetBoardState());
         }
     }
 }
