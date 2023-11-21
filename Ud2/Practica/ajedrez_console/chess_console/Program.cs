@@ -1,4 +1,4 @@
-﻿namespace ChessAPI
+﻿﻿namespace ChessAPI
 {
     class Program
     {
