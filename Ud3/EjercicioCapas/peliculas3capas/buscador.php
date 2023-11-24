@@ -12,8 +12,6 @@
         <?php
             echo "antes";
                 require("categoriasReglasNegocio.php");    
-                
-
                 $categoriasBL = new CategoriasReglasNegocio();
                 $datosCategorias = $categoriasBL->obtener();
 
