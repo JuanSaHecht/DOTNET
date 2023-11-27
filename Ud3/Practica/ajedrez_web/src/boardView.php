@@ -20,10 +20,8 @@
         $gameName = $_POST['game-name'];
         $addGameBL = new AddGameBusinessLogic();
         $addGameBL->get($player1,$player2,$gameName);
+
         
-        // echo "<p>".$player1,$player2,$gameName."</p>";
-
-
     // counts how many dead white pieces are
     function deadPiecesWhite($board) // recieves a string with state of board
     {
