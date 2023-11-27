@@ -26,37 +26,40 @@
 
         <div class="player-election">
             <p>PLAYER 1</p>
-            <select name="player1"> 
-                
-                <?php
-                    require("playersBusinessLogic.php");    
-                    $playersBL = new PlayersBusinessLogic();
-                    $playersData = $playersBL->get();
-
-
-                    foreach ($playersData as $player)
-                    {
-                        echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
-                    }
-                ?>
-            </select>
-            <br>
-            <br>
-            <br>
-            <p>PLAYER 2</p>
-            <select name="player2">
-                <?php           
+            <form action="" method="post">
+                <select name="player1"> 
+                    
+                    <?php
+                        require("playersBusinessLogic.php");    
                         $playersBL = new PlayersBusinessLogic();
                         $playersData = $playersBL->get();
-    
-    
+
+
                         foreach ($playersData as $player)
                         {
                             echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
                         }
-                ?>
-            </select>
-
+                    ?>
+                </select>
+            </form>
+            <br>
+            <br>
+            <br>
+            <p>PLAYER 2</p>
+            <form action="" method="post">
+                <select name="player2">
+                    <?php           
+                            $playersBL = new PlayersBusinessLogic();
+                            $playersData = $playersBL->get();
+        
+        
+                            foreach ($playersData as $player)
+                            {
+                                echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
+                            }
+                    ?>
+                </select>
+            </form>           
 
 
              <br>   
@@ -65,7 +68,7 @@
              <br>
             <input type="text" id="game-name">
             <br>
-            <button onclick="runScript">PLAY</button>
+            <button onclick="location.href = 'chessView.php';">PLAY</button>
 
             <?php
         require_once("addGameBusinessLogic.php");
