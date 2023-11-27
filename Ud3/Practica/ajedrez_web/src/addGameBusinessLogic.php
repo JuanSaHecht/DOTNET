@@ -36,18 +36,15 @@ class AddGameBusinessLogic
     }
 
 
-    function get($IdPlayer1,$Idlayer2,$gameName)
+    function get($IdPlayer1,$IdPlayer2,$gameName)
     {
-        $addGameDAL = new PlayersDataAccess();
-        $rs = $addGameDAL->get();
-		$playerList =  array();
-        foreach ($rs as $player)
-        {
-            $oPlayersBusinessLogic = new PlayersBusinessLogic();
-            $oPlayersBusinessLogic->Init($player['ID'],$player['name']);
-            array_push($playerList,$oPlayersBusinessLogic);
-        }
+        $addGameDAL = new AddGameDataAccess();
+        $player = $addGameDAL->get($IdPlayer1,$IdPlayer2,$gameName);
         
-        return $playerList;
+            $oAddGameBusinessLogic = new AddGameBusinessLogic();
+            $oAddGameBusinessLogic->Init($IdPlayer1,$IdPlayer2,$gameName);
+        
+        
+
     }
 }

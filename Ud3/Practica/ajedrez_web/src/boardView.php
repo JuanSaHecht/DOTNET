@@ -14,6 +14,16 @@
     ini_set('display_errors', 'On');
     ini_set('html_errors', 0);
 
+    require("addGameBusinessLogic.php");
+        $player1 = $_POST['player1'];
+        $player2 = $_POST['player2'];
+        $gameName = $_POST['game-name'];
+        $addGameBL = new AddGameBusinessLogic();
+        $addGameBL->get($player1,$player2,$gameName);
+        
+        // echo "<p>".$player1,$player2,$gameName."</p>";
+
+
     // counts how many dead white pieces are
     function deadPiecesWhite($board) // recieves a string with state of board
     {
@@ -232,6 +242,9 @@
 
         deadTableBlack($board);
     }
+
+    
+
     $board = "ROWH,0000,BIWH,0000,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,####,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,0000,PABL,ROBL,0000,BIBL,0000,KIBL,0000,KNBL,ROBL";
 
     echo "<div class=\"board\">";

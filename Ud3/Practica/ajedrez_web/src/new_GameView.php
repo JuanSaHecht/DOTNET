@@ -26,8 +26,8 @@
 
         <div class="player-election">
             <p>PLAYER 1</p>
-            <form action="" method="post">
-                <select name="player1"> 
+            <form action="boardView.php" method="post">
+                <select name="player1" id="player1"> 
                     
                     <?php
                         require("playersBusinessLogic.php");    
@@ -41,13 +41,13 @@
                         }
                     ?>
                 </select>
-            </form>
+            
             <br>
             <br>
             <br>
             <p>PLAYER 2</p>
-            <form action="" method="post">
-                <select name="player2">
+           
+                <select name="player2" id="player2">
                     <?php           
                             $playersBL = new PlayersBusinessLogic();
                             $playersData = $playersBL->get();
@@ -59,29 +59,20 @@
                             }
                     ?>
                 </select>
-            </form>           
+                     
 
 
              <br>   
             <br>
              <label for="game-name">GAME NAME</label>
              <br>
-            <input type="text" id="game-name">
+            <input type="text" id="game-name" name="game-name"required>
+             
             <br>
-            <button onclick="location.href = 'chessView.php';">PLAY</button>
+            <button onclick="location.href = 'boardView.php';">PLAY</button>
+            </form> 
 
-            <?php
-        require_once("addGameBusinessLogic.php");
-        $player1 = $_POST['player1'];
-        $player2 = $_POST['player2'];
-        $gameName = $_POST['game-name'];
-        // $addGameBL = new AddGameBusinessLogic();
-        // $addGameBL->get($player1,$player2,$gameName);
-        
-        echo "<p>".$player1,$player2,$gameName."fasdfasd</p>";
-      
-        
-    ?>
+            
 
         </div>
     </nav>

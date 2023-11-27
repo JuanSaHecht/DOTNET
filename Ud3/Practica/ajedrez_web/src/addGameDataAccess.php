@@ -1,13 +1,13 @@
 <?php
 
-class PlayersDataAccess
+class AddGameDataAccess
 {
 	
 	function __construct()
     {
     }
 
-	function get($IdPlayer1,$Idlayer2,$gameName)
+	function get($IdPlayer1,$IdPlayer2,$gameName)
 	{
         
 		$conexion = mysqli_connect('localhost','root','12345');
@@ -16,17 +16,16 @@ class PlayersDataAccess
 				echo "Error conecting to MySQL: ". mysqli_connect_error();
 		}
  		mysqli_select_db($conexion, 'chess_game');
-		$query = mysqli_prepare($conexion, "SELECT ID,name FROM T_Players");
+		$query = mysqli_prepare($conexion, "INSERT INTO chess_game.T_Matches
+		(ID,title,white,black,startDate,endDate,winner,state)
+		VALUES
+		(default,\"$gameName\",$IdPlayer1,$IdPlayer2,now(),null,null,default);");
         $query->execute();
         $result = $query->get_result();
 
-		$players =  array();
 
-        while ($myrow = $result->fetch_assoc()) 
-        {
-			array_push($players,$myrow);
-        }
+        
 		
-		return $players;
+
 	}
 }
