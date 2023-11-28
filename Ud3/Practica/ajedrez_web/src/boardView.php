@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>AJEDREZ</title>
 </head>
 
-<link rel="stylesheet" href="chess_game_styles.css">
+<link rel="stylesheet" href="../chess_game_styles.css">
 
 <body>
     <?php
@@ -133,7 +133,7 @@
                 echo "<td class=\"dead\">";
 
                 if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
-                    echo "<img src=\"Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
+                    echo "<img src=\"../Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
                     $positionPiecesShown++;
                 }
 
@@ -171,7 +171,7 @@
                 echo "<td class=\"dead\">";
 
                 if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
-                    echo "<img src=\"Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
+                    echo "<img src=\"../Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
                     $positionPiecesShown++;
                 }
 
@@ -208,7 +208,7 @@
                 }
 
                 if ($square != "0000" && $square != "####") {
-                    echo "<img src=\"Icons/" . $boardArray[$i][$y] . ".png\" >";
+                    echo "<img src=\"../Icons/" . $boardArray[$i][$y] . ".png\" >";
 
                 }
 
@@ -243,7 +243,7 @@
 
     
 
-    $board = "ROWH,0000,BIWH,0000,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,####,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,0000,PABL,ROBL,0000,BIBL,0000,KIBL,0000,KNBL,ROBL";
+    $board = "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL";
 
     echo "<div class=\"board\">";
     DrawChessGame($board);

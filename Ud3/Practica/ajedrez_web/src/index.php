@@ -16,7 +16,7 @@
         <div class="horizontal-menu">
             <ul>
                 <li><a href="new_GameView.php" class="horizotal-menu-link">NEW GAME</a></li>
-                <li><a href="gamesList.php" class="horizotal-menu-link">GAMES LIST</a></li>
+                <li><a href="gamesListView.php" class="horizotal-menu-link">GAMES LIST</a></li>
             </ul>
         </div>
     </header>
