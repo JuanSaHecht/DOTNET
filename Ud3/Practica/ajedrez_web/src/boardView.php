@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>AJEDREZ</title>
+
 </head>
 
 <link rel="stylesheet" href="../chess_game_styles.css">
@@ -14,14 +15,50 @@
     ini_set('display_errors', 'On');
     ini_set('html_errors', 0);
 
-    require("addGameBusinessLogic.php");
+    $function=$_GET['function']; 
+
+    if ($function == 1) 
+    {
+        require_once("addGameBusinessLogic.php");
         $player1 = $_POST['player1'];
         $player2 = $_POST['player2'];
         $gameName = $_POST['game-name'];
         $addGameBL = new AddGameBusinessLogic();
         $addGameBL->get($player1,$player2,$gameName);
 
+        $board = getInitalBoard();
+
+    echo "<div class=\"board\">";
+    DrawChessGame($board);
+    echo "</div>";
+
+    }else if ($function == 2) 
+    {
+        require_once("gameInfoBusinessLogic.php");
+        $game=$_GET['game'];
+        $board = getInitalBoard();
+
+        echo "<div class=\"movement-buttons\">";
+
+        drawGameInfo();
+        drawMoveButtons();
+
+        echo "</div>";
+
+
+
+        echo "<div class=\"board\">";
+        DrawChessGame($board);
+        echo "</div>";
+    }
+    
+
         
+        function getInitalBoard(){
+            return "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL";
+        }
+        
+
     // counts how many dead white pieces are
     function deadPiecesWhite($board) // recieves a string with state of board
     {
@@ -241,13 +278,44 @@
         deadTableBlack($board);
     }
 
+    function drawGameInfo(){
+        $gameSelected = $_GET['game'];
+        $gamesBL = new GameInfoBusinessLogic();
+        $gamesData = $gamesBL->get($gameSelected);
+
+        var_dump($gamesData);
+
+        foreach ($gamesData as $game) {
+            echo "<tr>";
+            echo "<p>" . $game->getID() . "</p>";
+            echo "<td>" . $game->getGameName() . "</td>";
+            echo "<td>" . $game->getStartDate() . "</td>";
+            echo "<td>" . $game->getStartHour() . "</td>";
+            echo "<td>" . $game->getState() . "</td>";
+            echo "<td>" . $game->getWinner() . "</td>";
+            echo "<td>" . $game->getEndDate() . "</td>";
+            echo "<td>" . $game->getEndHour() . "</td>";
+            echo "<td>" . $game->getnamePlayerWhite() . "</td>";
+            echo "<td>" . $game->getNamePlayerBlack() . "</td>";
+            echo "</tr>";
+        }
+    }
     
+    
+    function drawMoveButtons(){
 
-    $board = "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL";
+        
 
-    echo "<div class=\"board\">";
-    DrawChessGame($board);
-    echo "</div>";
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=0\"><img src=\"../Icons/skip_previous.png\" class=\"movement-buttons\"></a>";
+
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".($_GET['movement']-1)."\"><img src=\"../Icons/arrow_back.png\" class=\"movement-buttons\"></a>";
+
+
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".($_GET['movement']+1)."\"><img src=\"../Icons/arrow_forward.png\" class=\"movement-buttons\"></a>";
+
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=32\"><img src=\"../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
+    }
+    
 
     ?>
 </body>

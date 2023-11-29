@@ -12,6 +12,8 @@ body{
 
 
 
+
+
 /* HEADER---------------------------------------------------------- */
 header{ 
     /* background-color: hsla(0, 0%, 27%, 0.6); */
@@ -133,18 +135,31 @@ nav{
     width: 885px;
     height: 100%;
     font-size: medium;
-    
-
-    
 }
 
-.scrolling-table tr,th,td{
+
+
+
+.scrolling-table a {
+    text-decoration: none;
+    color: white;
+}
+
+.scrolling-table a:visited {
+    color: white;
+}
+
+
+.scrolling-table tr,td{
     border: 2px solid white;
     padding: 5px;
 }
 
-.scrolling-table th{
+.scrolling-table thead{
     position: sticky;
+    background-color: hsla(0, 0%, 15%);
+    border: 2px solid white;
+    border-collapse: collapse;
     top: 0px;
 }
 

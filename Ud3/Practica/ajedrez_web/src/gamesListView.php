@@ -29,13 +29,13 @@
                 <table>
                     <thead>
                         <tr>
-                        <th>ID</th>
+                        <th><a href="gamesListView.php?filter=3">ID</a></th>
                         <th>Description</th>
-                        <th>Start date</th>
+                        <th><a href="gamesListView.php?filter=1">Start date</a></th>
                         <th>Start Hour</th>
                         <th>Status</th>
                         <th>Winner</th>
-                        <th>End date</th>
+                        <th><a href="gamesListView.php?filter=2">End date</a></th>
                         <th>End Hour</th>
                         <th>White Pieces</th>
                         <th>Black Pieces</th>
@@ -45,15 +45,16 @@
                     <?php
                     
                     require_once("gamesListBusinessLogic.php");
-                    // $categoria = $_POST['id_categoria'];
-                    
+
+                    $filter = $_GET['filter'];   
+                             
                     $gamesBL = new GamesListBusinessLogic();
-                    $gamesData = $gamesBL->get();
+                    $gamesData = $gamesBL->get($filter);
 
 
                     foreach ($gamesData as $game) {
                         echo "<tr>";
-                        echo "<td>" . $game->getID() . "</td>";
+                        echo "<td><a href=\"boardView.php?function=2&game=".$game->getID()."&movement=0\">" . $game->getID() . "</a></td>";
                         echo "<td>" . $game->getGameName() . "</td>";
                         echo "<td>" . $game->getStartDate() . "</td>";
                         echo "<td>" . $game->getStartHour() . "</td>";

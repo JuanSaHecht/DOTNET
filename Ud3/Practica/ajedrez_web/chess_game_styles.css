@@ -55,3 +55,16 @@ td img {
     width: 70px;
     height: 70px;
 }
+
+.movement-buttons{
+    background-color: green;
+    width: 30%;
+    height: 100%;
+
+}
+
+.movement-buttons img{
+    width: 70px;
+    height: 70px;
+    
+}

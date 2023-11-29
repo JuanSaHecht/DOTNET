@@ -26,7 +26,7 @@
 
         <div class="player-election">
             <p>PLAYER 1</p>
-            <form action="boardView.php" method="post">
+            <form action="boardView.php?function=1" method="post">
                 <select name="player1" id="player1"> 
                     
                     <?php

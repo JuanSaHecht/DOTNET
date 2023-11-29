@@ -1,8 +1,8 @@
 <?php
 
-require("gamesListDataAccess.php");
+require("gameInfoDataAccess.php");
 
-class GamesListBusinessLogic
+class GameInfoBusinessLogic
 {
     private $_ID;
     private $_GameName;
@@ -83,14 +83,14 @@ class GamesListBusinessLogic
     }
 
 
-    function get($filter)
+    function get($gameSelected)
     {
-        $gamesDAL = new GamesListDataAccess();
-        $rs = $gamesDAL->get($filter);
+        $gamesDAL = new GameInfoDataAccess();
+        $rs = $gamesDAL->get($gameSelected);
 		$gamesList =  array();
         foreach ($rs as $game)
         {
-            $oGamesBusinessLogic = new GamesListBusinessLogic();
+            $oGamesBusinessLogic = new GameInfoBusinessLogic();
             $oGamesBusinessLogic->Init($game['ID'],$game['title'],$game['StartDate'],$game['StartHour'],$game['state'],$game['winner'],$game['EndDate'],$game['EndHour'],$game['White'],$game['Black']);
             array_push($gamesList,$oGamesBusinessLogic);
         }
