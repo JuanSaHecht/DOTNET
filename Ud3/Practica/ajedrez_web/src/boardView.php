@@ -28,6 +28,9 @@
 
         $board = getInitalBoard();
 
+        
+
+
     echo "<div class=\"board\">";
     DrawChessGame($board);
     echo "</div>";
@@ -38,13 +41,14 @@
         $game=$_GET['game'];
         $board = getInitalBoard();
 
-        echo "<div class=\"movement-buttons\">";
+        $history = getGameHistory($game);
+
+        echo "<div class=\"game-info\">";
 
         drawGameInfo();
-        drawMoveButtons();
+        drawMoveButtons($history);
 
         echo "</div>";
-
 
 
         echo "<div class=\"board\">";
@@ -280,29 +284,29 @@
 
     function drawGameInfo(){
         $gameSelected = $_GET['game'];
+        $movement = $_GET['movement'];
         $gamesBL = new GameInfoBusinessLogic();
         $gamesData = $gamesBL->get($gameSelected);
 
-        var_dump($gamesData);
+       
 
         foreach ($gamesData as $game) {
-            echo "<tr>";
-            echo "<p>" . $game->getID() . "</p>";
-            echo "<td>" . $game->getGameName() . "</td>";
-            echo "<td>" . $game->getStartDate() . "</td>";
-            echo "<td>" . $game->getStartHour() . "</td>";
-            echo "<td>" . $game->getState() . "</td>";
-            echo "<td>" . $game->getWinner() . "</td>";
-            echo "<td>" . $game->getEndDate() . "</td>";
-            echo "<td>" . $game->getEndHour() . "</td>";
-            echo "<td>" . $game->getnamePlayerWhite() . "</td>";
-            echo "<td>" . $game->getNamePlayerBlack() . "</td>";
-            echo "</tr>";
+            echo "<p>Game ID: " . $game->getID() . "</p>";
+            echo "<p>Game name: " . $game->getGameName() . "</p>";
+            echo "<p>Start date: " . $game->getStartDate() . "</p>";
+            echo "<p>Start hour: " . $game->getStartHour() . "</p>";
+            echo "<p>State: " . $game->getState() . "</p>";
+            echo "<p>Winner: " . $game->getWinner() . "</p>";
+            echo "<p>End date: " . $game->getEndDate() . "</p>";
+            echo "<p>End hour: " . $game->getEndHour() . "</p>";
+            echo "<p>White. " . $game->getnamePlayerWhite() . "</p>";
+            echo "<p>Black: " . $game->getNamePlayerBlack() . "</p>";
+            echo "<p>Movement: " . $movement . "</p>";
         }
     }
     
     
-    function drawMoveButtons(){
+    function drawMoveButtons($history){
 
         
 
@@ -313,9 +317,28 @@
 
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".($_GET['movement']+1)."\"><img src=\"../Icons/arrow_forward.png\" class=\"movement-buttons\"></a>";
 
-        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=32\"><img src=\"../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".(count($history)-1)."\"><img src=\"../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
+
     }
     
+
+
+    function getGameHistory($idGame){
+        require_once("gameStatusBusinessLogic.php");
+        $historyBL = new GameStatusBusinessLogic();
+        $gameHistory = $historyBL->get($idGame);
+
+        $history = array();
+
+        array_push($history,getInitalBoard());// The position 0 of the array it's the initial board
+
+        foreach ($gameHistory as $movement) {
+            array_push($history,$movement);
+        }
+
+
+        return $history;
+    }
 
     ?>
 </body>

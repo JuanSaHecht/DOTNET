@@ -1,6 +1,11 @@
 * {
     margin: 0;
     padding: 0;
+    
+}
+
+body{
+    background-color: hsla(0, 0%, 15%);
 }
 
 .board {
@@ -8,6 +13,7 @@
     left: 30%;
     width: 600px;
     height: 900px;
+    
 }
 
 table.dead {
@@ -56,15 +62,20 @@ td img {
     height: 70px;
 }
 
-.movement-buttons{
-    background-color: green;
-    width: 30%;
-    height: 100%;
-
+.game-info{
+    background-color: hsl(180, 100%, 50%,0.5);
+    position: absolute;
+    width: 20%;
+    height: 30%;
+    top: 5%;
+    left: 5%;
+    text-align: center;
+    padding-top: 10px;
 }
 
-.movement-buttons img{
-    width: 70px;
-    height: 70px;
-    
-}
+/* .game-info a{
+    display: inline-block;
+    position: static;
+    width: 24%;
+    margin-top: 10px;
+} */

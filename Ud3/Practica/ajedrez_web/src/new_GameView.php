@@ -26,8 +26,7 @@
 
         <div class="player-election">
             <p>PLAYER 1</p>
-            <form action="boardView.php?function=1" method="post">
-                <select name="player1" id="player1"> 
+            
                     
                     <?php
                         require("playersBusinessLogic.php");    
@@ -35,12 +34,17 @@
                         $playersData = $playersBL->get();
 
 
+                       echo "<form action=\"boardView.php?function=1\" method=\"post\">";
+                        echo "<select name=\"player1\" id=\"player1\">"; 
+
                         foreach ($playersData as $player)
                         {
                             echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
                         }
+
+                        echo "</select>";
                     ?>
-                </select>
+                
             
             <br>
             <br>
@@ -69,7 +73,7 @@
             <input type="text" id="game-name" name="game-name"required>
              
             <br>
-            <button onclick="location.href = 'boardView.php';">PLAY</button>
+            <button onclick="location.href = 'boardView.php?function=20\">PLAY</button>
             </form> 
 
             

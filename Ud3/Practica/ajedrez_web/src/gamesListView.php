@@ -54,8 +54,8 @@
 
                     foreach ($gamesData as $game) {
                         echo "<tr>";
-                        echo "<td><a href=\"boardView.php?function=2&game=".$game->getID()."&movement=0\">" . $game->getID() . "</a></td>";
-                        echo "<td>" . $game->getGameName() . "</td>";
+                        echo "<td>" . $game->getID() . "</td>";
+                        echo "<td><a href=\"boardView.php?function=2&game=".$game->getID()."&movement=0\">" . $game->getGameName() . "</a></td>";
                         echo "<td>" . $game->getStartDate() . "</td>";
                         echo "<td>" . $game->getStartHour() . "</td>";
                         echo "<td>" . $game->getState() . "</td>";

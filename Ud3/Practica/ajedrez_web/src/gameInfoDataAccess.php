@@ -42,16 +42,17 @@ class GameInfoDataAccess
         $consult->execute();
         $result = $consult->get_result();
 
-		$result->fetch_assoc();
 
-        // while ($myrow = $result->fetch_assoc()) 
-        // {
-		// 	array_push($columns,$myrow);
+        $columns =  array();
 
-        // }
+        while ($myrow = $result->fetch_assoc()) 
+        {
+			array_push($columns,$myrow);
+            
 
-        echo "<p>".$result."</p>";
-		return $result;
+        }
+
+		return $columns;
 	}
 
 
