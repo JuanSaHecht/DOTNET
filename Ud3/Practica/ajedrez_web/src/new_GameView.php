@@ -73,7 +73,7 @@
             <input type="text" id="game-name" name="game-name"required>
              
             <br>
-            <button onclick="location.href = 'boardView.php?function=20\">PLAY</button>
+            <button onclick="location.href = 'boardView.php\">PLAY</button>
             </form> 
 
             
