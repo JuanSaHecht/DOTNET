@@ -39,9 +39,13 @@
     {
         require_once("gameInfoBusinessLogic.php");
         $game=$_GET['game'];
-        $board = getInitalBoard();
+        $movement=$_GET['movement'];
 
-        $history = getGameHistory($game);
+        $history= getGameHistory($game);
+
+        $board = getBoardStatus($game,$movement,$history);
+
+
 
         echo "<div class=\"game-info\">";
 
@@ -318,7 +322,7 @@
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".($_GET['movement']+1)."\"><img src=\"../Icons/arrow_forward.png\" class=\"movement-buttons\"></a>";
 
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".(count($history)-1)."\"><img src=\"../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
-
+         
     }
     
 
@@ -338,6 +342,11 @@
 
 
         return $history;
+    }
+
+
+    function getBoardStatus($idGame,$movement,$history){
+            return $history[$movement];
     }
 
     ?>

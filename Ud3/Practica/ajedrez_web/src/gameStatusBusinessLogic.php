@@ -11,9 +11,9 @@ class GameStatusBusinessLogic
     {
     }
 
-    function init($id,$board)
+    function init($board)
     {
-        $this->_ID = $id;
+        // $this->_ID = $id;
         $this->_Board = $board;
     }
 
@@ -36,10 +36,10 @@ class GameStatusBusinessLogic
         foreach ($rs as $status)
         {
             $oGameStatusBusinessLogic = new GameStatusBusinessLogic();
-            $oGameStatusBusinessLogic->Init($status['ID'],$status['board']);
-            array_push($movementsList,$oGameStatusBusinessLogic);
+            $oGameStatusBusinessLogic->Init($status['board']);
+            array_push($movementsList,$oGameStatusBusinessLogic->getBoard());
         }
-        
+
         return $movementsList;
     }
 }
