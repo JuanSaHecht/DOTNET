@@ -24,16 +24,20 @@
         $player2 = $_POST['player2'];
         $gameName = $_POST['game-name'];
         $addGameBL = new AddGameBusinessLogic();
-        $addGameBL->get($player1,$player2,$gameName);
+        $addGameBL->get($player1,$player2,$gameName);//Insert to database
 
         $board = getInitalBoard();
 
-        
+        echo "<div class=\"game-info\">";
+
+        drawNewGameInfo($player1,$player2,$gameName);
+
+        echo "</div>";
 
 
-    echo "<div class=\"board\">";
-    DrawChessGame($board);
-    echo "</div>";
+        echo "<div class=\"board\">";
+        DrawChessGame($board);
+        echo "</div>";
 
     }else if ($function == 2) 
     {
@@ -44,6 +48,7 @@
         $history= getGameHistory($game);
 
         $board = getBoardStatus($game,$movement,$history);
+
 
 
 
@@ -309,10 +314,24 @@
         }
     }
     
+    function drawNewGameInfo($player1,$player2,$gameName){
+        
+
+            $dayHour= new DateTime();
+
+
+            // echo "<p>Game ID: " . $game->getID() . "</p>";
+            echo "<p>Game name: " . $gameName. "</p>";
+            echo "<p>Start date: " . $dayHour->format("Y-m-d") . "</p>";
+            echo "<p>Start hour: " . $dayHour-> format("H:i:s"). "</p>";
+            echo "<p>White. " . $player1 . "</p>";
+            echo "<p>Black: " . $player2 . "</p>";
+
+    }
     
     function drawMoveButtons($history){
 
-        
+
 
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=0\"><img src=\"../Icons/skip_previous.png\" class=\"movement-buttons\"></a>";
 
