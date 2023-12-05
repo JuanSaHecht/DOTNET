@@ -29,13 +29,16 @@
                 <table>
                     <thead>
                         <tr>
-                        <th><a href="gamesListView.php?filter=3">ID</a></th>
+                        <th><a href="?filter=3">ID</a></th>
                         <th>Description</th>
-                        <th><a href="gamesListView.php?filter=1">Start date</a></th>
+                        <th><a href="?filter=1">Start date</a></th>
                         <th>Start Hour</th>
-                        <th>Status</th>
+                        <th><a>Status</a></th>";
+                        
+                        
+                        
                         <th>Winner</th>
-                        <th><a href="gamesListView.php?filter=2">End date</a></th>
+                        <th><a href="?filter=2">End date</a></th>
                         <th>End Hour</th>
                         <th>White Pieces</th>
                         <th>Black Pieces</th>

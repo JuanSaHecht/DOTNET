@@ -17,7 +17,7 @@
 
     $function=$_GET['function']; 
 
-    if ($function == 1) 
+    if ($function == 1) // Show a new game
     {
         require_once("addGameBusinessLogic.php");
         $player1 = $_POST['player1'];
@@ -39,7 +39,7 @@
         DrawChessGame($board);
         echo "</div>";
 
-    }else if ($function == 2) 
+    }else if ($function == 2) // Show a played game
     {
         require_once("gameInfoBusinessLogic.php");
         $game=$_GET['game'];
@@ -331,17 +331,37 @@
     
     function drawMoveButtons($history){
 
+        
+        $movement = $_GET['movement'] ;
+        
+        
 
+
+
+        if ($movement <= 0) { 
+            $anterior = 0;
+        }else {
+            $anterior = $movement -1;
+        }
+
+
+        if ($movement >= count($history)-1) {
+            $posterior = count($history)-1;
+        }else {
+            $posterior = $movement +1;
+        }
+
+        $ultima = count($history)-1;
 
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=0\"><img src=\"../Icons/skip_previous.png\" class=\"movement-buttons\"></a>";
 
-        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".($_GET['movement']-1)."\"><img src=\"../Icons/arrow_back.png\" class=\"movement-buttons\"></a>";
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$anterior."\"><img src=\"../Icons/arrow_back.png\" class=\"movement-buttons\"></a>";
 
 
-        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".($_GET['movement']+1)."\"><img src=\"../Icons/arrow_forward.png\" class=\"movement-buttons\"></a>";
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$posterior."\"><img src=\"../Icons/arrow_forward.png\" class=\"movement-buttons\"></a>";
 
-        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".(count($history)-1)."\"><img src=\"../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
-         
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$ultima."\"><img src=\"../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
+
     }
     
 
