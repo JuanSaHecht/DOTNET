@@ -33,10 +33,14 @@
                         <th>Description</th>
                         <th><a href="?filter=1">Start date</a></th>
                         <th>Start Hour</th>
-                        <th><a>Status</a></th>";
+
+
                         
-                        
-                        
+                        <th><select name="" id="" class="status-select">
+                            <option value="" disabled selected>Status</option>
+                            <option value="1">Jaque Mate</option>
+                            <option value="2">En curso</option>
+                        </select></th>
                         <th>Winner</th>
                         <th><a href="?filter=2">End date</a></th>
                         <th>End Hour</th>

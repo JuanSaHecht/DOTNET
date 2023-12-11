@@ -80,26 +80,45 @@ class GamesListDataAccess
             T_Players TPB ON TPB.ID = TM.black
             order by EndDate desc");
         }else if ($filter == 3) {
-            # code...
-        }{
             return mysqli_prepare($conexion, "SELECT 
-        TM.ID,
-        title,
-        DATE(startDate) AS StartDate,
-        TIME(startDate) AS StartHour,
-        state,
-        winner,
-        DATE(endDate) AS EndDate,
-        TIME(endDate) AS EndHour,
-        TPW.name White,
-        TPB.name Black
-    FROM
-        T_Matches TM
-            JOIN
-        T_Players TPW ON TPW.ID = TM.white
-            JOIN
-        T_Players TPB ON TPB.ID = TM.black
-        order by ID asc");
-        }
+            TM.ID,
+            title,
+            DATE(startDate) AS StartDate,
+            TIME(startDate) AS StartHour,
+            state,
+            winner,
+            DATE(endDate) AS EndDate,
+            TIME(endDate) AS EndHour,
+            TPW.name White,
+            TPB.name Black
+        FROM
+            T_Matches TM
+                JOIN
+            T_Players TPW ON TPW.ID = TM.white
+                JOIN
+            T_Players TPB ON TPB.ID = TM.black
+            order by ID asc");
+            }else {
+                return mysqli_prepare($conexion, "SELECT 
+            TM.ID,
+            title,
+            DATE(startDate) AS StartDate,
+            TIME(startDate) AS StartHour,
+            state,
+            winner,
+            DATE(endDate) AS EndDate,
+            TIME(endDate) AS EndHour,
+            TPW.name White,
+            TPB.name Black
+        FROM
+            T_Matches TM
+                JOIN
+            T_Players TPW ON TPW.ID = TM.white
+                JOIN
+            T_Players TPB ON TPB.ID = TM.black
+            order by ID asc");
+            }
+        
+           
     }
 }
