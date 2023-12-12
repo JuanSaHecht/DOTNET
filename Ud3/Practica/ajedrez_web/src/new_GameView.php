@@ -39,7 +39,7 @@
 
                         foreach ($playersData as $player)
                         {
-                            echo "<option value=\"{$player->getID()},{$player->getName()}\">{$player->getName()}</option>";
+                            echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
                         }
 
                         echo "</select>";
@@ -59,7 +59,7 @@
         
                             foreach ($playersData as $player)
                             {
-                                echo "<option value=\"{$player->getID()},{$player->getName()}\">{$player->getName()}</option>";
+                                echo "<option value=\"{$player->getID()}\">{$player->getName()}</option>";
                             }
                     ?>
                 </select>

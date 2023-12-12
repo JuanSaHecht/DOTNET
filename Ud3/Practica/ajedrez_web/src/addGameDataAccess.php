@@ -9,7 +9,6 @@ class AddGameDataAccess
 
 	function get($IdPlayer1,$IdPlayer2,$gameName)
 	{
-        
 		$conexion = mysqli_connect('localhost','root','12345');
 		if (mysqli_connect_errno())
 		{

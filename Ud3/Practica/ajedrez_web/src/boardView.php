@@ -23,10 +23,13 @@
         $player1 = $_POST['player1'];
         $player2 = $_POST['player2'];
         $gameName = $_POST['game-name'];
+        
         $addGameBL = new AddGameBusinessLogic();
+        
         $addGameBL->get($player1,$player2,$gameName);//Insert to database
-
+        
         $board = getInitalBoard();
+        
 
         echo "<div class=\"game-info\">";
 
@@ -318,8 +321,6 @@
         
 
             $dayHour= new DateTime();
-
-
             // echo "<p>Game ID: " . $game->getID() . "</p>";
             echo "<p>Game name: " . $gameName. "</p>";
             echo "<p>Start date: " . $dayHour->format("Y-m-d") . "</p>";
