@@ -16,7 +16,7 @@ class GameInfoDataAccess
 		}
         mysqli_select_db($conexion, 'chess_game');
 
-        $sanitized_categoria_id = mysqli_real_escape_string($conexion,$gameSelected);
+        $sanitized_game_selected = mysqli_real_escape_string($conexion,$gameSelected);
 
 		$consult = mysqli_prepare($conexion, "SELECT 
         TM.ID,
@@ -37,7 +37,7 @@ class GameInfoDataAccess
         T_Players TPB ON TPB.ID = TM.black
         having TM.ID = ?");
 
-        $consult->bind_param('s', $sanitized_categoria_id);
+        $consult->bind_param('s', $sanitized_game_selected);
 
         $consult->execute();
         $result = $consult->get_result();
