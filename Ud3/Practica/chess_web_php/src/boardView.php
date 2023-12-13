@@ -355,12 +355,8 @@
         $ultima = count($history)-1;
 
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=0\"><img src=\"../Icons/skip_previous.png\" class=\"movement-buttons\"></a>";
-
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$anterior."\"><img src=\"../Icons/arrow_back.png\" class=\"movement-buttons\"></a>";
-
-
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$posterior."\"><img src=\"../Icons/arrow_forward.png\" class=\"movement-buttons\"></a>";
-
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$ultima."\"><img src=\"../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
 
     }

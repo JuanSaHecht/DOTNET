@@ -33,7 +33,6 @@
                         $playersBL = new PlayersBusinessLogic();
                         $playersData = $playersBL->get();
 
-
                        echo "<form action=\"boardView.php?function=1\" method=\"post\">";
                         echo "<select name=\"player1\" id=\"player1\">"; 
 

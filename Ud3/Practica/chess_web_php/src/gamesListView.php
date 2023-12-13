@@ -32,10 +32,7 @@
                         <th><a href="?filter=3">ID</a></th>
                         <th>Description</th>
                         <th><a href="?filter=1">Start date</a></th>
-                        <th>Start Hour</th>
-
-
-                        
+                        <th>Start Hour</th>                        
                         <th>Status</th>
                         <th>Winner</th>
                         <th><a href="?filter=2">End date</a></th>
