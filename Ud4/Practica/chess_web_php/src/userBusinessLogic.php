@@ -10,7 +10,7 @@ class UsuarioReglasNegocio
     }
     function verificar($usuario, $clave)
     {
-        $usuariosDAL = new UsuarioAccesoDatos();
+        $usuariosDAL = new UserDataAcces();
         $res = $usuariosDAL->verificar($usuario,$clave);
         
         return $res;
