@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    background-color: hsla(0, 0%, 15%);
+}
+
+.board {
+    position: relative;
+    left: 30%;
+    width: 600px;
+    height: 900px;
+    
+}
+
+table.dead {
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    
+
+}
+
+table.board {
+    position: static;
+    border: 10px solid #513100;
+    width: 100px;
+    height: 400px;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 0;
+    text-align: center;
+    width: 70px;
+    height: 70px;
+}
+
+/*WHITE SQUARE*/
+td.white {
+    background-color: #ffdba2;
+}
+
+/*BLACK SQUARE*/
+td.black {
+    background-color: #714500;
+    /*1b1b1b*/
+}
+
+td.dead {
+    background-color: #714500;
+
+    width: 70px;
+    height: 70px;
+}
+
+td img {
+    width: 70px;
+    height: 70px;
+}
+
+.game-info{
+    background-color: hsl(180, 100%, 50%,0.5);
+    position: absolute;
+    width: 20%;
+    height: 30%;
+    top: 5%;
+    left: 5%;
+    text-align: center;
+    padding-top: 10px;
+}
+

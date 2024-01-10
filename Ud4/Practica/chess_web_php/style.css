@@ -1,0 +1,184 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("Icons/fondo-ajedrez1.jpg");
+    font-family: Tofino;
+}
+
+
+/* HEADER---------------------------------------------------------- */
+header{ 
+    padding-top: 0px;
+    color: white;
+    font-size: xx-large;
+    width: 97%;
+    height: 23%;
+    margin: 14px;
+    margin-bottom: 0px;
+}
+
+
+
+.horizontal-menu{
+    width: 35%;
+    height: 25px;
+    margin:14px;
+    margin-left: 0px;
+    margin-top: 10px;
+    font-size: x-large;
+}
+
+.horizontal-menu ul{
+    list-style-type: none;
+    color: white;
+}
+
+.horizontal-menu li{
+    margin-right: 20px;
+    padding-top: 10px;
+
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+}
+
+.horizotal-menu-link:hover{
+    color: aqua;
+}
+
+.login{
+    font-size: 25px;
+    top: 10px;
+    right: 100px;
+    position: absolute;
+}
+
+/* -------------------------------------------------------------- */
+
+
+
+
+nav{
+    padding-top: 100px;
+    width: 97%;
+    height: 70%;
+    margin: 14px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+    font-size: x-large;
+}
+
+/* NEW GAME------------------------------------------------------ */
+.player-election{
+    padding-top: 10px;
+    
+}
+
+
+.player-election select{
+    width: 100px;
+    height: 30px;
+    text-align: center;
+
+}
+
+.player-election button{
+    margin-top: 50px;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+/* -------------------------------------------------------------- */
+
+.games-list{
+    padding-top: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    background-color: hsla(0, 0%, 15%, 0.9);
+    width: 1000px;
+    height: 60%;
+    
+}
+
+.scrolling-table{
+    padding-top: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 1000px;
+    max-height: 60%;
+            overflow-y: auto; 
+}
+
+.scrolling-table table {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    width: 885px;
+    height: 100%;
+    font-size: medium;
+}
+
+
+
+
+.scrolling-table a {
+    text-decoration: none;
+    color: white;
+}
+
+.scrolling-table a:visited {
+    color: white;
+}
+
+
+.scrolling-table tr,td{
+    border: 2px solid white;
+    padding: 5px;
+}
+
+.scrolling-table thead{
+    position: sticky;
+    background-color: hsla(0, 0%, 15%);
+    border: 2px solid white;
+    border-collapse: collapse;
+    top: 0px;
+}
+
+/* -------------------------------------------------------------- */
+
+.status-select{
+    width:100px; 
+    margin: 10px;
+    text-align: center;
+}
+
+
+footer{
+    position: absolute;
+    top: 98%;
+    width: 97%;
+    height: 4%;
+    margin: 14px;
+    margin-bottom: 0px;
+    color: white;
+    text-align: center;
+    
+        
+}
+
+
