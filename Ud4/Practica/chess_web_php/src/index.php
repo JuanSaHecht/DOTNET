@@ -1,25 +1,3 @@
-<?php
-
-require ("userBusinessLogic.php");
-
-if ($_SERVER["REQUEST_METHOD"]=="POST")
-{
-    $usuarioBL = new UsuarioReglasNegocio();
-    $perfil =  $usuarioBL->verificar($_POST['usuario'],$_POST['clave']);
-
-    if ($perfil==="administrador" || $perfil==="jugador")
-    {
-        session_start(); //inicia o reinicia una sesión
-        $_SESSION['usuario'] = $_POST['usuario'];
-        header("Location: tournamentView.php");
-    }
-    else
-    {
-        $error = true;
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,25 +13,18 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
 
     <header>
         <h1><a href="index.php">CHESS</a></h1> 
-        <!-- <span class="login"><a href="login.php">Log In</a></span> -->
+        <span class="login"><a href="login.php">Log In</a></span>
         <p>GAME</p>
-        <!-- <div class="horizontal-menu">
+        <div class="horizontal-menu">
             <ul>
                 <li><a href="new_GameView.php" class="horizotal-menu-link">NEW GAME</a></li>
-                <li><a href="gamesListView.php" class="horizotal-menu-link">GAMES LIST</a></li>
+                <!-- <li><a href="gamesListView.php" class="horizotal-menu-link">GAMES LIST</a></li> -->
             </ul>
-        </div> -->
+        </div>
     </header>
     
     <nav>
-        <p><form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for = "usuario"> Usuario: </label>
-        <input id="usuario" name = "usuario" type = "text">
-        <br><br>
-        <label for = "usuario"> Contraseña: </label>
-        <input id = "clave" name = "clave" type = "password">
-        <br><br>
-        <input type = "submit"></p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum laudantium minima reiciendis vitae debitis. Dolorem laborum repudiandae voluptatem nesciunt natus asperiores facere ducimus facilis beatae eos. Velit totam voluptate minus?</p>
     </nav>
 
     <footer><b>&#169 CHESS GAME</b></footer>
