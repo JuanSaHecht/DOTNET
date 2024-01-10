@@ -8,14 +8,14 @@ ini_set('display_errors', 'On');
 
 function test_alta_usuario()
 {
-    $u = new UsuarioAccesoDatos();
+    $u = new UserDataAcces();
     return $u->insertar('alex','gold','passwordalex');
 }
 
 function test_verificar_usuario_encontrado()
 {
     $perfil_esperado = 'gold';
-    $u = new UsuarioAccesoDatos();
+    $u = new UserDataAcces();
     $perfil = $u->verificar('alex','passwordalex');
     return $perfil === $perfil_esperado;
 }

@@ -1,6 +1,6 @@
 <?php
 
-class UsuarioAccesoDatos
+class UserDataAcces
 {
 	
 	function __construct()
