@@ -9,16 +9,16 @@ ini_set('display_errors', 'On');
 function test_alta_usuario()
 {
     $u = new UserDataAcces();
-    return $u->insertar('alex','gold','passwordalex');
+    return $u->insertar('ruben','silver','ruben1');
 }
 
 function test_verificar_usuario_encontrado()
 {
-    $perfil_esperado = 'gold';
+    $perfil_esperado = 'silver';
     $u = new UserDataAcces();
-    $perfil = $u->verificar('alex','passwordalex');
+    $perfil = $u->verificar('ruben','ruben1');
     return $perfil === $perfil_esperado;
 }
 
-// var_dump(test_alta_usuario());
+var_dump(test_alta_usuario());
 var_dump(test_verificar_usuario_encontrado());

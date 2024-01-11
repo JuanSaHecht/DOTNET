@@ -10,7 +10,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     if ($perfil==="gold" || $perfil==="silver")
     {
         session_start(); //inicia o reinicia una sesión
-        $_SESSION['usuario'] = $_POST['usuario'];
+        $_SESSION['clave'] = $_POST['clave'];
+        $_SESSION['username']=$_POST['usuario'];
+        $_SESSION['profile']=$perfil;
         header("Location: index.php");
     }
     else
@@ -36,12 +38,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         <h1><a href="index.php">CHESS</a></h1> 
         <!-- <span class="login"><a href="login.php">Log In</a></span> -->
         <p>GAME</p>
-        <!-- <div class="horizontal-menu">
+        <div class="horizontal-menu">
             <ul>
-                <li><a href="new_GameView.php" class="horizotal-menu-link">NEW GAME</a></li>
-                <li><a href="gamesListView.php" class="horizotal-menu-link">GAMES LIST</a></li>
+                <!-- <li><a href="new_GameView.php" class="horizotal-menu-link">NEW GAME</a></li> -->
+                <!-- <li><a href="gamesListView.php" class="horizotal-menu-link">GAMES LIST</a></li> -->
             </ul>
-        </div> -->
+        </div>
     </header>
     
     <nav>

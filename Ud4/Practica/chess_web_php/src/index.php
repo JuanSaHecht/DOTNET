@@ -10,15 +10,44 @@
 
 
 <body>
-
     <header>
         <h1><a href="index.php">CHESS</a></h1> 
-        <span class="login"><a href="login.php">Log In</a></span>
+        <?php 
+                    session_start(); // reanudamos la sesión
+                    if (!isset($_SESSION['clave']))
+                    {
+                        echo "<span class=\"login\"><a href=\"login.php\">Log In</a></span>";
+                    }else{
+                        if ($_SESSION['profile']==="gold"||$_SESSION['profile']==="silver") {
+                            echo "<span class=\"login\"><p>".$_SESSION['username']."</p><a href=\"logout.php\">Log Out</a></span> ";
+                        }
+                    }
+
+
+                    ?>
+
+        <!-- <span class="login"><a href="login.php">Log In</a></span> -->
         <p>GAME</p>
         <div class="horizontal-menu">
             <ul>
                 <li><a href="new_GameView.php" class="horizotal-menu-link">NEW GAME</a></li>
-                <!-- <li><a href="gamesListView.php" class="horizotal-menu-link">GAMES LIST</a></li> -->
+
+                <?php 
+                session_start(); // reanudamos la sesión
+                    if (!isset($_SESSION['clave']))
+                    {
+                        header("Location: login.php");
+                    }else{
+                        if ($_SESSION['profile']==="gold") {
+                            echo "<li><a href=\"gamesListView.php\" class=\"horizotal-menu-link\">GAMES LIST</a></li> ";
+                        }else {
+                            
+                        }
+                    }
+
+
+                    ?>
+                
             </ul>
         </div>
     </header>

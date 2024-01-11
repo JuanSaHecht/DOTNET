@@ -58,6 +58,15 @@ header a{
     top: 10px;
     right: 100px;
     position: absolute;
+    display: flex;
+}
+
+.login p{
+    margin-right: 50px;
+}
+
+.login a:hover{
+    color: aqua;
 }
 
 /* -------------------------------------------------------------- */

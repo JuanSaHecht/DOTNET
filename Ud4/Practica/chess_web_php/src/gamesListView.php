@@ -13,6 +13,20 @@
 
     <header>
         <h1><a href="index.php">CHESS</a></h1>
+        <?php 
+                    session_start(); // reanudamos la sesión
+                    if (!isset($_SESSION['clave']))
+                    {
+                        echo "<span class=\"login\"><a href=\"login.php\">Log In</a></span>";
+                    }else{
+                        if ($_SESSION['profile']==="gold"||$_SESSION['profile']==="silver") {
+                            echo "<span class=\"login\"><p>".$_SESSION['username']."</p><a href=\"logout.php\">Log Out</a></span> ";
+                        }
+                    }
+
+
+                    ?>
+
         <p>GAME</p>
         <div class="horizontal-menu">
             <ul>
