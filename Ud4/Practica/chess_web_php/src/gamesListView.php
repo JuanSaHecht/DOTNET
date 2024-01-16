@@ -19,8 +19,10 @@
                     {
                         echo "<span class=\"login\"><a href=\"login.php\">Log In</a></span>";
                     }else{
-                        if ($_SESSION['profile']==="gold"||$_SESSION['profile']==="silver") {
+                        if ($_SESSION['profile']==="gold") {
                             echo "<span class=\"login\"><p>".$_SESSION['username']."</p><a href=\"logout.php\">Log Out</a></span> ";
+                        }else if ($_SESSION['profile']==="silver") {
+                            header("Location: index.php");
                         }
                     }
 

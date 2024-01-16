@@ -48,10 +48,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     
     <nav>
     <form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for = "usuario"> Usuario: </label>
+        <label for = "usuario"> User: </label>
+        
         <input id="usuario" name = "usuario" type = "text">
         <br><br>
-        <label for = "usuario"> Contraseña: </label>
+        <label for = "usuario"> Password: </label>
         <input id = "clave" name = "clave" type = "password">
         <br><br>
         <input type = "submit">

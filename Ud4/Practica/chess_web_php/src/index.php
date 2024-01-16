@@ -36,7 +36,7 @@
                 session_start(); // reanudamos la sesión
                     if (!isset($_SESSION['clave']))
                     {
-                        header("Location: login.php");
+                        header("Location: loginView.php");
                     }else{
                         if ($_SESSION['profile']==="gold") {
                             echo "<li><a href=\"gamesListView.php\" class=\"horizotal-menu-link\">GAMES LIST</a></li> ";
