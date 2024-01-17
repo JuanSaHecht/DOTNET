@@ -18,9 +18,13 @@
             // Punctuation puntuacion = new Punctuation();
 
             Board board = new Board("ROWH,KNWH,0000,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL");
+
+           Punctuation puntuacion = board.CreateDistanceMessage(board.CalculateMaterialValue());
             
-            board.calculateMaterialValue();
-            
+            Console.WriteLine(puntuacion.GetMaterialValueWhitePieces());
+            Console.WriteLine(puntuacion.GetMaterialValueBlackPieces());
+            Console.WriteLine(puntuacion.GetDistanceMessage());
+
 
             // Punctuation prueba = Punctuation.obtainPunctuation("ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL");
 

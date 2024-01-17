@@ -214,9 +214,9 @@ namespace ChessAPI
 
         }
 
-        public  void calculateMaterialValue ()
+        public Dictionary<string,int> CalculateMaterialValue()
         {
-
+            Dictionary<string,int> materialValue = new Dictionary<string,int>();
             int whitePiecesValue = 0;
             int blackPiecesValue = 0;
 
@@ -231,12 +231,10 @@ namespace ChessAPI
                         if (this.board[i,j]._color == Piece.ColorEnum.WHITE)
                         {
                             whitePiecesValue+=this.board[i,j].GetScore();
-                            // Console.WriteLine(this.board[i,j].GetType().Name);
                         }
                         else if (this.board[i,j]._color == Piece.ColorEnum.BLACK)
                         {
                             blackPiecesValue+=this.board[i,j].GetScore();
-                            // Console.WriteLine(this.board[i,j].GetType().Name);
                         }
 
                     }
@@ -246,8 +244,42 @@ namespace ChessAPI
                
             }
 
+            materialValue.Add("BLACK",blackPiecesValue);
+            materialValue.Add("WHITE",whitePiecesValue);
             
 
+            return materialValue;
+
         }
+
+
+         public Punctuation CreateDistanceMessage(Dictionary<string,int> materialValue)
+        {
+            string distanceMessage;
+            
+         if(materialValue["BLACK"] > materialValue["WHITE"])
+         {
+            distanceMessage =  "The black pieces are winning with a distance of "+(materialValue["BLACK"] - materialValue["WHITE"]);
+         }  
+         else if(materialValue["WHITE"] > materialValue["BLACK"])
+         {
+            distanceMessage = "The white pieces are winning with a distance of "+( materialValue["WHITE"] - materialValue["BLACK"]);
+         }
+         else if(materialValue["WHITE"] == materialValue["BLACK"])
+         {
+            distanceMessage = "Both have the same points";
+         }
+         else {
+            distanceMessage = "ERROR";
+         }
+
+         Punctuation puntuacion = new Punctuation(materialValue["WHITE"],materialValue["BLACK"],distanceMessage);
+
+         return puntuacion;
+         
+        }
+
+
+
     }
 }
