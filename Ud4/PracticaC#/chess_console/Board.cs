@@ -253,7 +253,7 @@ namespace ChessAPI
         }
 
 
-         public Punctuation CreateDistanceMessage(Dictionary<string,int> materialValue)
+         public BoardScore GetScore(Dictionary<string,int> materialValue)
         {
             string distanceMessage;
             
@@ -273,7 +273,7 @@ namespace ChessAPI
             distanceMessage = "ERROR";
          }
 
-         Punctuation puntuacion = new Punctuation(materialValue["WHITE"],materialValue["BLACK"],distanceMessage);
+         BoardScore puntuacion = new BoardScore(materialValue["WHITE"],materialValue["BLACK"],distanceMessage);
 
          return puntuacion;
          

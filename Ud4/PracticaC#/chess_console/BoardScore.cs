@@ -1,17 +1,17 @@
 namespace ChessAPI
 {
-    public class Punctuation
+    public class BoardScore
     {
         private  int _materialValueWhitePieces;
         private  int _materialValueBlackPieces;
         private  string _distanceMessage;
 
-        public Punctuation ()
+        public BoardScore ()
         {
            
         }
 
-        public Punctuation (int materialValueWhitePieces, int materialValueBlackPieces, string distanceMessage)
+        public BoardScore (int materialValueWhitePieces, int materialValueBlackPieces, string distanceMessage)
         {
             _materialValueWhitePieces = materialValueWhitePieces;
             _materialValueBlackPieces = materialValueBlackPieces;

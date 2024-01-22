@@ -19,7 +19,7 @@
 
             Board board = new Board("ROWH,KNWH,0000,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL");
 
-           Punctuation puntuacion = board.CreateDistanceMessage(board.CalculateMaterialValue());
+           BoardScore puntuacion = board.GetScore(board.CalculateMaterialValue());
             
             Console.WriteLine(puntuacion.GetMaterialValueWhitePieces());
             Console.WriteLine(puntuacion.GetMaterialValueBlackPieces());
