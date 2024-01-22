@@ -47,16 +47,15 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     </header>
     
     <nav>
-    <form method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for = "usuario"> User: </label>
-        
-        <input id="usuario" name = "usuario" type = "text">
-        <br><br>
-        <label for = "usuario"> Password: </label>
-        <input id = "clave" name = "clave" type = "password">
-        <br><br>
-        <input type = "submit">
-    </form>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <input id="usuario" name="usuario" type="text" placeholder="username"/>
+                <input id = "clave" name="clave" type="password" placeholder="password"/>
+                <button type = "submit" >Login</button>
+            </form>
+        </div>
+    </div>
 
     <?php
         if (isset($error))
