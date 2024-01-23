@@ -410,9 +410,10 @@
         }
         curl_close($ch);
         $x = json_decode($json,true);
-        print($x["_materialValueWhitePieces"]);
-        print($x["_materialValueBlackPieces"]);
-        print($x["_distanceMessage"]);
+        echo "<p>White Value: " . $x["_materialValueWhitePieces"]. "</p>";
+        echo "<p>Black Value: " . $x["_materialValueBlackPieces"]. "</p>";
+        echo "<p>Message: " . $x["_distanceMessage"]. "</p>";
+ 
     }  
 
     ?>
