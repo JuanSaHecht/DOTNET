@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/carlos/Escritorio/WebAPIS/ChessAPI/ChessAPI.csproj": {}
+    "/var/www/html/Ud4/ChessAPI/ChessAPI.csproj": {}
   },
   "projects": {
-    "/home/carlos/Escritorio/WebAPIS/ChessAPI/ChessAPI.csproj": {
+    "/var/www/html/Ud4/ChessAPI/ChessAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/carlos/Escritorio/WebAPIS/ChessAPI/ChessAPI.csproj",
+        "projectUniqueName": "/var/www/html/Ud4/ChessAPI/ChessAPI.csproj",
         "projectName": "ChessAPI",
-        "projectPath": "/home/carlos/Escritorio/WebAPIS/ChessAPI/ChessAPI.csproj",
-        "packagesPath": "/home/carlos/.nuget/packages/",
-        "outputPath": "/home/carlos/Escritorio/WebAPIS/ChessAPI/obj/",
+        "projectPath": "/var/www/html/Ud4/ChessAPI/ChessAPI.csproj",
+        "packagesPath": "/home/horabaixa/.nuget/packages/",
+        "outputPath": "/var/www/html/Ud4/ChessAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/carlos/.nuget/NuGet/NuGet.Config"
+          "/home/horabaixa/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/6.0.125/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/6.0.122/RuntimeIdentifierGraph.json"
         }
       }
     }
