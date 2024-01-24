@@ -29,9 +29,6 @@
                 }
                 curl_close($ch);
                 $x = json_decode($json,true);
-                // echo "<p>White Value: " . $x["_materialValueWhitePieces"]. "</p>";
-                // echo "<p>Black Value: " . $x["_materialValueBlackPieces"]. "</p>";
-                // echo "<p>Message: " . $x["_distanceMessage"]. "</p>";
                 return $x;
             }
         }
