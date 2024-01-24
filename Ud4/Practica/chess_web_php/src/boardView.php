@@ -30,8 +30,6 @@
         
         $board = getInitalBoard();
         
-        
-
         echo "<div class=\"game-info\">";
 
         drawNewGameInfo($player1,$player2,$gameName,$board);
@@ -48,13 +46,8 @@
         require_once("gameInfoBusinessLogic.php");
         $game=$_GET['game'];
         $movement=$_GET['movement'];
-
         $history= getGameHistory($game);
-
         $board = getBoardStatus($game,$movement,$history);
-
-
-
 
         echo "<div class=\"game-info\">";
 
@@ -390,29 +383,12 @@
     }
 
     function getBoardApi($boardStatus){
-        ini_set('display_errors', 'On');
-        ini_set('html_errors', 0);
-        $board = $boardStatus;
-        
-
-        $board = str_replace('####','0000',$board);
-        $url = "https://localhost:7246/ChessGame?board=".$board;
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,4);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $json = curl_exec($ch);
-        //var_dump($response);
-        if (!$json)
-        {
-            echo curl_error($ch);
-        }
-        curl_close($ch);
-        $x = json_decode($json,true);
-        echo "<p>White Value: " . $x["_materialValueWhitePieces"]. "</p>";
-        echo "<p>Black Value: " . $x["_materialValueBlackPieces"]. "</p>";
-        echo "<p>Message: " . $x["_distanceMessage"]. "</p>";
+        require_once("boardStatusApiBusinessLogic.php");
+        $boardStatusApiBL = new BoardStatusApiBusinessLogic();
+        $gamesData = $boardStatusApiBL->get($boardStatus);
+        echo "<p>White Value: " . $gamesData->getMaterialValueWhitePieces(). "</p>";
+        echo "<p>Black Value: " . $gamesData->getMaterialValueBlackPieces(). "</p>";
+        echo "<p>Message: " . $gamesData->getDistanceMessage(). "</p>";
  
     }  
 
