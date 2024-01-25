@@ -6,7 +6,12 @@ namespace ChessAPI.Model
         {
         }
 
-        public override int GetScore()
+       public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board)
+        {
+        return MovementType.InvalidNormalMovement;
+        }
+
+        public override  int GetScore()
         {
             return int.MaxValue;
         }

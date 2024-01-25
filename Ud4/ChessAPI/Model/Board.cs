@@ -2,7 +2,7 @@ namespace ChessAPI.Model
 {
     public class Board
     {
-        private Piece[,] board;
+        public Piece[,] board {get;set;}
         //+Borrame
         private string dummy_board; //Cadena de prueba para verificar la longitud de la cadena recibida.
         //-Borrame
@@ -87,6 +87,69 @@ namespace ChessAPI.Model
             //-Borrame
 
         } 
+
+
+        public Piece this[int index1,int index2]
+    {
+        get { return board[index1,index2]; }
+        set { board[index1,index2] = value; }
+    }
+
+// AÑADIDO
+        public void Move(Movement movement)
+        {
+            if (movement.IsValid())
+            {
+                _Move(movement);
+            }
+        }
+       
+        private void _Move(Movement movement)
+        {
+            int fromRow = movement.fromRow;
+            int fromColumn = movement.fromColumn;
+            int toRow = movement.toRow;
+            int toColumn = movement.toColumn;
+
+            board[toRow,toColumn] = board[fromRow,fromColumn];
+            
+            board[fromRow,fromColumn] = null;
+        }
+
+
+        public string GetBoardState()
+        {
+            string result = String.Empty;
+            
+            
+            for (int row = 0; row < 8; row++)
+            {
+                for (int column = 0; column < 8; column++)
+                {
+                    
+                     if (this.board[row,column] != null)
+                    {
+                        result = result + this.board[row,column].GetCode();
+                    }else
+                    {if ((row + column) % 2 != 0)
+                        {
+                            result = result + "0000";
+                        }else
+                        {
+                            result = result + "0000";
+                        }
+                    }
+
+                    if (row != 7 || column != 7) // Adds "," to the end of each piece
+                        {
+                        result += ",";
+                        }
+                    }
+            }
+
+            return result;
+
+        }
 
         //TODO Cambiar este método que devuelva el objeto requerido en la práctica 
         public Dictionary<string,int> CalculateMaterialValue()

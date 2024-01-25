@@ -2,17 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChessAPI.Model
+namespace Escacs
 {
     public class Rook : Piece
     {
         public Rook(ColorEnum color) : base(color)
         {
-        }
-
-        public override int GetScore()
-        {
-            return PieceValues.RookPieceValue;
         }
 
         public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board)

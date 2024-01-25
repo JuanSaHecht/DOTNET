@@ -41,6 +41,8 @@
         DrawChessGame($board);
         echo "</div>";
 
+        movePiece("ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL",7,0,7,4);
+
     }else if ($function == 2) // Show a played game
     {
         require_once("gameInfoBusinessLogic.php");
@@ -391,6 +393,13 @@
         echo "<p>Message: " . $gamesData->getDistanceMessage(). "</p>";
  
     }  
+
+    function movePiece($boardStatus,$fromCol,$fromRow,$toCol,$toRow)
+    {
+        require_once("movementApiBusinessLogic.php");
+        $movementBL = new MovementApiBusinessLogic();
+        $movementBL->get($boardStatus,$fromCol,$fromRow,$toCol,$toRow);
+    }
 
     ?>
 </body>

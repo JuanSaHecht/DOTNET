@@ -1,11 +1,11 @@
 <?php
-        class BoardStatusApiDataAccess{
+        class MovementApiDataAccess{
 
             function construct()
             {
             }
 
-            function get($boardStatus){
+            function get($boardStatus,$fromCol,$fromRow,$toCol,$toRow){
                 ini_set('display_errors', 'On');
                 ini_set('html_errors', 0);
                 
@@ -15,7 +15,7 @@
                 
 
                 $board = str_replace('####','0000',$board);
-                $url = "https://localhost:7246/ChessGame?board=".$board;
+                $url = "https://localhost:7246/Movement?boardStatus=".$board."&fromCol=".$fromCol."&fromRow=".$fromRow."&toCol=".$toCol."&toRow=".$toRow;
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL,$url);
                 curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
@@ -29,6 +29,7 @@
                 }
                 curl_close($ch);
                 $x = json_decode($json,true);
+                var_dump($x);
                 return $x;
             }
         }
