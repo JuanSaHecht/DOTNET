@@ -7,7 +7,7 @@
 
 </head>
 
-<link rel="stylesheet" href="../chess_game_styles.css">
+<link rel="stylesheet" href="../style.css">
 
 <body>
     <?php
@@ -20,28 +20,70 @@
     if ($function == 1) // Show a new game
     {
         require_once("addGameBusinessLogic.php");
+        $flag = $_POST['flag'];
         $player1 = $_POST['player1'];
         $player2 = $_POST['player2'];
         $gameName = $_POST['game-name'];
+
+        
         
         $addGameBL = new AddGameBusinessLogic();
         
-        $addGameBL->get($player1,$player2,$gameName);//Insert to database
+            $addGameBL->get($player1,$player2,$gameName);//Insert to database
         
-        $board = getInitalBoard();
         
+        $board = "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL";
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && $flag == 0) {
+            
+            $fromCol = $_POST['fromCol'];//7
+            $fromRow = $_POST['fromRow'];//0
+            $toCol = $_POST['toCol'];//7
+            $toRow = $_POST['toRow'];//4
+            $board = movePiece($board,$fromCol,$fromRow,$toCol,$toRow);
+        } 
+        
+
+
         echo "<div class=\"game-info\">";
 
         drawNewGameInfo($player1,$player2,$gameName,$board);
-
+        getBoardApi($board);
         echo "</div>";
 
-
+        
         echo "<div class=\"board\">";
         DrawChessGame($board);
         echo "</div>";
 
-        movePiece("ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL",7,0,7,4);
+       
+        echo "<div class=\"menu-movement\">";
+        echo "<form  method=\"post\" action=\"\">";
+        echo "<input type=\"hidden\" name=\"game-name\" id=\"game-name\" value=".$gameName.">";
+        echo "<input type=\"hidden\" name=\"player1\" id=\"player1\" value=".$player1.">";
+        echo "<input type=\"hidden\" name=\"player2\" id=\"player2\" value=".$player2.">";
+        echo "<input class=\"numbers\" type=\"number\" id=\"fromCol\" name=\"fromCol\" min=\"0\" max=\"7\" placeholder=\"From Column\" required>";
+        echo "<br>";
+        echo "<input class=\"numbers\" type=\"number\" id=\"fromRow\" name=\"fromRow\" min=\"0\" max=\"7\" placeholder=\"From Row\" required>";
+        echo "<br>";
+        echo "<input class=\"numbers\" type=\"number\" id=\"toCol\" name=\"toCol\" min=\"0\" max=\"7\" placeholder=\"To Column\" required>";
+        echo "<br>";
+        echo "<input class=\"numbers\" type=\"number\" id=\"toRow\" name=\"toRow\" min=\"0\" max=\"7\" placeholder=\"To Row\" required>";
+        echo "<br>";
+        echo "<input type=\"hidden\" name=\"flag\" id=\"flag\" value=0>";
+        echo "<br><br>";
+        echo "<input class=\"boton\" type=\"submit\"  value=\"MOVE\">";
+        echo "</form>";
+        echo "</div>";
+
+             
+       
+    
+    
+
+    
+
+
 
     }else if ($function == 2) // Show a played game
     {
@@ -55,7 +97,7 @@
 
         drawGameInfo();
         drawMoveButtons($history);
-
+        
         echo "</div>";
 
 
@@ -174,7 +216,7 @@
 
         $positionPiecesShown = 0;
 
-        echo "<table \"dead\">";
+        echo "<table class=\"dead\">";
         for ($i = 0; $i < 2; $i++) {
 
             echo "<tr>";
@@ -212,7 +254,7 @@
 
         $positionPiecesShown = 0;
 
-        echo "<table \"dead\">";
+        echo "<table class=\"dead\">";
         for ($i = 0; $i < 2; $i++) {
 
             echo "<tr>";
@@ -325,7 +367,7 @@
             echo "<p>White. " . $player1 . "</p>";
             echo "<p>Black: " . $player2 . "</p>";
 
-            getBoardApi($board);
+            
 
     }
     
@@ -398,7 +440,17 @@
     {
         require_once("movementApiBusinessLogic.php");
         $movementBL = new MovementApiBusinessLogic();
-        $movementBL->get($boardStatus,$fromCol,$fromRow,$toCol,$toRow);
+       $movement = $movementBL->get($boardStatus,$fromCol,$fromRow,$toCol,$toRow);
+
+       if ($movement[0] == false) {
+        echo '<script>alert("Invalid Movement!");</script>';
+        return $movement[1];
+       }else 
+       {
+        return $movement[1];
+       }
+
+       
     }
 
     ?>

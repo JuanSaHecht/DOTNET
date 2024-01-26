@@ -29,7 +29,6 @@
                 }
                 curl_close($ch);
                 $x = json_decode($json,true);
-                var_dump($x);
                 return $x;
             }
         }

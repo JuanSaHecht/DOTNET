@@ -61,7 +61,9 @@
                         $playersData = $playersBL->get();
 
                        echo "<form action=\"boardView.php?function=1\" method=\"post\">";
+                       echo "<input type=\"hidden\" name=\"flag\" id=\"flag\" value=1>";
                         echo "<select name=\"player1\" id=\"player1\">"; 
+                        
 
                         foreach ($playersData as $player)
                         {

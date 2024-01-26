@@ -56,5 +56,7 @@ class MovementApiBusinessLogic
             $oMovementApiBusinessLogic->init($boardStatus,$fromCol,$fromRow,$toCol,$toRow);
         
             $oMovementApiBusinessLogic;
+
+            return $rs;
     }
 }
