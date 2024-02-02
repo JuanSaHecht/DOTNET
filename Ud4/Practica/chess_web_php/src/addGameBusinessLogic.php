@@ -39,12 +39,12 @@ class AddGameBusinessLogic
     function get($IdPlayer1,$IdPlayer2,$gameName)
     {
         $addGameDAL = new AddGameDataAccess();
-        $addGameDAL->get($IdPlayer1,$IdPlayer2,$gameName);
+       $addGameDAL->get($IdPlayer1,$IdPlayer2,$gameName);
         
             $oAddGameBusinessLogic = new AddGameBusinessLogic();
             $oAddGameBusinessLogic->Init($IdPlayer1,$IdPlayer2,$gameName);
-        
-        
+
+      
 
     }
 }

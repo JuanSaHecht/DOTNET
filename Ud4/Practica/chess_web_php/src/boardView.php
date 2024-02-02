@@ -11,11 +11,15 @@
 
 <body>
     <?php
-
+    session_start(); // reanudamos la sesión
     ini_set('display_errors', 'On');
     ini_set('html_errors', 0);
 
     $function=$_GET['function']; 
+    if (empty($_SESSION['board'])) {
+        $_SESSION['board'] = getInitalBoard();
+    }
+
 
     if ($function == 1) // Show a new game
     {
@@ -27,12 +31,14 @@
 
         
         
-        $addGameBL = new AddGameBusinessLogic();
-        
+        if ($_SESSION['insertedMatch'] == false)
+        {
+            $addGameBL = new AddGameBusinessLogic();
             $addGameBL->get($player1,$player2,$gameName);//Insert to database
+            insertBoardStatus($_SESSION['board']);
+            $_SESSION['insertedMatch'] = true;
+        }
         
-        
-        $board = "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST" && $flag == 0) {
             
@@ -40,20 +46,21 @@
             $fromRow = $_POST['fromRow'];//0
             $toCol = $_POST['toCol'];//7
             $toRow = $_POST['toRow'];//4
-            $board = movePiece($board,$fromCol,$fromRow,$toCol,$toRow);
+            $_SESSION['board'] = movePiece($_SESSION['board'],$fromCol,$fromRow,$toCol,$toRow);
+            insertBoardStatus($_SESSION['board']);
         } 
         
 
 
         echo "<div class=\"game-info\">";
 
-        drawNewGameInfo($player1,$player2,$gameName,$board);
-        getBoardApi($board);
+        drawNewGameInfo($player1,$player2,$gameName,$_SESSION['board']);
+        getBoardApi($_SESSION['board']);
         echo "</div>";
 
         
         echo "<div class=\"board\">";
-        DrawChessGame($board);
+        DrawChessGame($_SESSION['board']);
         echo "</div>";
 
        
@@ -78,7 +85,7 @@
 
              
        
-    
+
     
 
     
@@ -376,10 +383,6 @@
         
         $movement = $_GET['movement'] ;
         
-        
-
-
-
         if ($movement <= 0) { 
             $anterior = 0;
         }else {
@@ -411,7 +414,6 @@
 
         $history = array();
 
-        array_push($history,getInitalBoard());// The position 0 of the array it's the initial board
 
         foreach ($gameHistory as $movement) {
             array_push($history,$movement);
@@ -444,13 +446,21 @@
 
        if ($movement[0] == false) {
         echo '<script>alert("Invalid Movement!");</script>';
+        
         return $movement[1];
-       }else 
+       }else if($movement[0] == true)
        {
         return $movement[1];
        }
 
        
+    }
+
+    function insertBoardStatus($boardStatus)
+    {
+        require_once("addBoardStatusGameBusinessLogic.php");
+        $addStatusBL = new AddBoardStatusGameBusinessLogic();
+        $addStatusBL->get($boardStatus);//Insert to database
     }
 
     ?>

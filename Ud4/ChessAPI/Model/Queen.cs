@@ -8,7 +8,18 @@ namespace ChessAPI.Model
 
         public override MovementType ValidateSpecificRulesForMovement(Movement movement, Piece[,] board)
         {
-        return MovementType.InvalidNormalMovement;
+            Rook rook = new Rook(ColorEnum.WHITE);
+            Bishop bishop = new Bishop(ColorEnum.WHITE);
+
+
+            if (bishop.ValidateSpecificRulesForMovement(movement,board) == MovementType.ValidNormalMovement | rook.ValidateSpecificRulesForMovement(movement,board) == MovementType.ValidNormalMovement)
+            {
+                return MovementType.ValidNormalMovement;
+            }else
+            {
+                return MovementType.InvalidNormalMovement;
+            }
+        
         }
 
         public override int GetScore()

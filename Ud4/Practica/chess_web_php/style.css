@@ -4,6 +4,7 @@
 }
 
 body{
+  overflow: hidden;
     width: 100vw;
     height: 100vh;
     background-image: url("Icons/fondo-ajedrez1.jpg");
@@ -50,7 +51,7 @@ header a{
 }
 
 .horizotal-menu-link:hover{
-    color: hsl(241, 90%, 70%);
+    color: hsl(36, 98%, 37%);
 }
 
 .login{
@@ -66,7 +67,7 @@ header a{
 }
 
 .login a:hover{
-    color: rgb(131, 131, 247);
+    color: hsl(36, 98%, 37%);
 }
 
 /* -------------------------------------------------------------- */
@@ -92,19 +93,57 @@ nav{
 }
 
 
-.player-election select{
-    width: 100px;
-    height: 30px;
-    text-align: center;
+.player-election input{
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 300px;
+  height: 20px;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
 
 }
 
+.player-election select{
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 300px;
+  height: 30px;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: black;
+
+}
 .player-election button{
-    margin-top: 50px;
+    margin-top: 30px;
     width: 100px;
     height: 50px;
-    text-align: center;
-    font-size: xx-large;
+    font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  /* background: hsl(122, 39%, 49%); */
+  background: hsl(36, 98%, 37%);
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.player-election button:hover,.player-election button:active,.player-election button:focus {
+  /* background: hsl(123, 41%, 45%); */
+  background: hsl(37, 100%, 33%);
 }
 
 /* -------------------------------------------------------------- */
@@ -180,7 +219,7 @@ nav{
     z-index: 1;
     /* background: #000000; */
     max-width: 360px;
-    margin: 0 auto 100px;
+    margin: 0 auto 80px 0;
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -201,7 +240,8 @@ nav{
     text-transform: uppercase;
     outline: 0;
     /* background: hsl(122, 39%, 49%); */
-    background: hsl(240, 88%, 74%);
+    background: hsl(36, 98%, 37%);
+    
     width: 100%;
     border: 0;
     padding: 15px;
@@ -213,7 +253,8 @@ nav{
   }
   .form button:hover,.form button:active,.form button:focus {
     /* background: hsl(123, 41%, 45%); */
-    background: hsl(241, 90%, 70%);
+    background:  hsl(37, 100%, 33%);
+   
   }
   .form .message {
     margin: 15px 0 0;
@@ -266,7 +307,7 @@ nav{
 
 .board {
   position: relative;
-  left: 30%;
+  left: 33%;
   width: 600px;
   height: 900px;
   
@@ -355,7 +396,7 @@ td img {
   text-transform: uppercase;
   outline: 0;
   /* background: hsl(122, 39%, 49%); */
-  background: hsl(240, 88%, 74%);
+  background: hsl(36, 98%, 37%);
   width: 100%;
   border: 0;
   padding: 15px;
@@ -368,7 +409,7 @@ td img {
 
 .boton:hover,.boton:active,.boton:focus {
   /* background: hsl(123, 41%, 45%); */
-  background: hsl(241, 90%, 70%);
+  background: hsl(37, 100%, 33%);
 }
 
 /* -------------------------------------------------------------- */
@@ -382,7 +423,7 @@ td img {
 
 footer{
     position: absolute;
-    top: 98%;
+    top: 90%;
     width: 97%;
     height: 4%;
     margin: 14px;

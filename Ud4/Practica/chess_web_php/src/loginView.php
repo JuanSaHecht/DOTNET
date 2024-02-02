@@ -10,9 +10,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     if ($perfil==="gold" || $perfil==="silver")
     {
         session_start(); //inicia o reinicia una sesión
-        $_SESSION['clave'] = $_POST['clave'];
-        $_SESSION['username']=$_POST['usuario'];
-        $_SESSION['profile']=$perfil;
+        $_SESSION['clave'] = $_POST['clave']; // password
+        $_SESSION['username']=$_POST['usuario']; // username
+        $_SESSION['profile']=$perfil; // profile type
+        $_SESSION['insertedMatch']=false; // The new game has been inserted to the database
+        $_SESSION['board']=null; // value of the board
         header("Location: index.php");
     }
     else

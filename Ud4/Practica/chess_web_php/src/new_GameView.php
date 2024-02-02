@@ -15,6 +15,7 @@
     <h1><a href="index.php">CHESS</a></h1>
     <?php 
                     session_start(); // reanudamos la sesión
+                    $_SESSION['board']=null; // value of the board
                     if (!isset($_SESSION['clave']))
                     {
                         echo "<span class=\"login\"><a href=\"login.php\">Log In</a></span>";

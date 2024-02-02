@@ -1,5 +1,4 @@
 <?php
-
 class AddGameDataAccess
 {
 	
@@ -24,12 +23,7 @@ class AddGameDataAccess
 		(?,$IdPlayer1,$IdPlayer2,now());");
 
 		$query->bind_param('s', $sanitized_game_name);
-
         $query->execute();
-
-
-        
-		
 
 	}
 }

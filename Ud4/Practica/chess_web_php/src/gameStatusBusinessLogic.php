@@ -1,7 +1,6 @@
 <?php
 
 require("gameStatusDataAccess.php");
-
 class GameStatusBusinessLogic
 {
     private $_ID;
@@ -13,7 +12,6 @@ class GameStatusBusinessLogic
 
     function init($board)
     {
-        // $this->_ID = $id;
         $this->_Board = $board;
     }
 
@@ -39,7 +37,6 @@ class GameStatusBusinessLogic
             $oGameStatusBusinessLogic->Init($status['board']);
             array_push($movementsList,$oGameStatusBusinessLogic->getBoard());
         }
-
         return $movementsList;
     }
 }
