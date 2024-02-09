@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
                 <input id="usuario" name="usuario" type="text" placeholder="username"/>
                 <input id = "clave" name="clave" type="password" placeholder="password"/>
                 <button type = "submit" >Login</button>
+                <a href="">Sign Up</a>
             </form>
         </div>
     </div>

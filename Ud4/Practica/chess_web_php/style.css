@@ -211,9 +211,24 @@ nav{
 /* -------------------------------------------------------------- */
 
 .login-page {
-    width: 360px;
+    width: 500px;
     margin: auto;
   }
+
+  .login-page a{
+    color: white;
+    text-transform: capitalize;
+    text-decoration: none;
+
+    transition: all 0.2s ease-in-out;
+  }
+
+  .login-page a:hover{
+    color: hsl(36, 98%, 37%);
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+
   .form {
     position: relative;
     z-index: 1;
@@ -239,9 +254,7 @@ nav{
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    /* background: hsl(122, 39%, 49%); */
     background: hsl(36, 98%, 37%);
-    
     width: 100%;
     border: 0;
     padding: 15px;
@@ -250,6 +263,7 @@ nav{
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
+    margin-bottom: 20px;
   }
   .form button:hover,.form button:active,.form button:focus {
     /* background: hsl(123, 41%, 45%); */
