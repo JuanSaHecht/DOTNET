@@ -21,7 +21,7 @@ public class ChessGameController : ControllerBase
         {
             if (string.IsNullOrEmpty(board))
                 return BadRequest("board no puede ser IsNullOrEmpty");
-
+                
             var response = _boardService.GetScore(board);
             return Ok(response);
             

@@ -307,16 +307,21 @@ nav{
 
 .board {
   position: relative;
-  left: 33%;
+  left: 35%;
   width: 600px;
   height: 900px;
-  
+  padding-top: 30px;
 }
 
 table.dead {
   position: relative;
-  width: 100%;
   border-collapse: collapse;
+  left: 87px;
+}
+
+table.dead img{
+  width: 30px;
+  height: 30px;
 }
 
 table.board {
@@ -327,7 +332,7 @@ table.board {
   border-collapse: collapse;
 }
 
-td {
+.board td {
   padding: 0;
   text-align: center;
   width: 70px;
@@ -348,13 +353,13 @@ td.black {
 td.dead {
   background-color: #714500;
 
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
 }
 
-td img {
-  width: 70px;
-  height: 70px;
+.board img {
+  width: 60px;
+  height: 60px;
 }
 
 .game-info{

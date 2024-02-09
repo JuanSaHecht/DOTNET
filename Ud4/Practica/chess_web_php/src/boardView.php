@@ -117,7 +117,7 @@
          
 
         function getInitalBoard(){
-            return "ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL";
+            return "ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,0000,####,0000,####,0000,####,0000,####,####,0000,####,0000,####,0000,####,0000,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,0000,####,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH";
         }
         
 
@@ -299,11 +299,11 @@
 
                 //  White Square
                 if ((($i + $y) % 2) != 0) {
-                    echo "<td class=\"white\">";
+                    echo "<td class=\"black\">";
                 }
                 // Black Square
                 else {
-                    echo "<td class=\"black\">";
+                    echo "<td class=\"white\">";
                 }
 
                 if ($square != "0000" && $square != "####") {
@@ -404,24 +404,6 @@
         echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$ultima."\"><img src=\"../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
 
     }
-    
-
-
-    function getGameHistory($idGame){
-        require_once("gameStatusBusinessLogic.php");
-        $historyBL = new GameStatusBusinessLogic();
-        $gameHistory = $historyBL->get($idGame);
-
-        $history = array();
-
-
-        foreach ($gameHistory as $movement) {
-            array_push($history,$movement);
-        }
-
-
-        return $history;
-    }
 
 
     function getBoardStatus($idGame,$movement,$history){
@@ -434,7 +416,7 @@
         $gamesData = $boardStatusApiBL->get($boardStatus);
         echo "<p>White Value: " . $gamesData->getMaterialValueWhitePieces(). "</p>";
         echo "<p>Black Value: " . $gamesData->getMaterialValueBlackPieces(). "</p>";
-        echo "<p>Message: " . $gamesData->getDistanceMessage(). "</p>";
+        echo "<p>" . $gamesData->getDistanceMessage(). "</p>";
  
     }  
 
@@ -462,8 +444,14 @@
         $addStatusBL = new AddBoardStatusGameBusinessLogic();
         $addStatusBL->get($boardStatus);//Insert to database
     }
-
+    //PRUEBA GetScore https://localhost:7246/ChessGame?board=ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL    
     ?>
 </body>
 
 </html>
+
+
+
+
+
+

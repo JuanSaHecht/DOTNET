@@ -43,8 +43,5 @@ class AddGameBusinessLogic
         
             $oAddGameBusinessLogic = new AddGameBusinessLogic();
             $oAddGameBusinessLogic->Init($IdPlayer1,$IdPlayer2,$gameName);
-
-      
-
     }
 }

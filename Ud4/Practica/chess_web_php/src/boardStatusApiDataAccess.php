@@ -9,11 +9,7 @@
                 ini_set('display_errors', 'On');
                 ini_set('html_errors', 0);
                 
-                
-                
                 $board = $boardStatus;
-                
-
                 $board = str_replace('####','0000',$board);
                 $url = "https://localhost:7246/ChessGame?board=".$board;
                 $ch = curl_init();
