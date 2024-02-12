@@ -1,8 +1,8 @@
 <?php
 
-require("userDataAcces.php");
+require("../DataAccess/userDataAcces.php");
 
-class UsuarioReglasNegocio
+class UserBussinessLogic
 {
 
 	function __construct()

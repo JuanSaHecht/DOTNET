@@ -1,6 +1,6 @@
 <?php
 
-require("gameInfoDataAccess.php");
+require("../DataAccess/gameInfoDataAccess.php");
 
 class GameInfoBusinessLogic
 {

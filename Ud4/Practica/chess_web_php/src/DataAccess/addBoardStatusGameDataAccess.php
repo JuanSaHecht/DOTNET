@@ -18,7 +18,8 @@ class AddBoardStatusGameDataAccess
 
 		$query = mysqli_prepare($conexion, "INSERT INTO chess_game.T_Board_Status
 		(IDGame,board)
-		VALUES ((select ID from chess_game.T_Matches order by ID desc limit 1),'$boardStatus') ;");
+		VALUES ((select ID from chess_game.T_Matches order by ID desc limit 1),?) ;");
+		$query->bind_param('s', $boardStatus);
         $query->execute();
 
 		

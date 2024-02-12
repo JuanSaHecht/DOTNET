@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,7 +8,7 @@
 
 </head>
 
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../../style.css">
 
 <body>
     <?php
@@ -23,20 +24,22 @@
 
     if ($function == 1) // Show a new game
     {
-        require_once("addGameBusinessLogic.php");
+        require_once("../BusinessLogic/addGameBusinessLogic.php");
         $flag = $_POST['flag'];
         $player1 = $_POST['player1'];
         $player2 = $_POST['player2'];
         $gameName = $_POST['game-name'];
 
-        
+        var_dump($_SESSION['insertedMatch']);
         
         if ($_SESSION['insertedMatch'] == false)
         {
+            var_dump($_SESSION['insertedMatch']);
             $addGameBL = new AddGameBusinessLogic();
             $addGameBL->get($player1,$player2,$gameName);//Insert to database
             insertBoardStatus($_SESSION['board']);
             $_SESSION['insertedMatch'] = true;
+            var_dump($_SESSION['insertedMatch']);
         }
         
 
@@ -85,7 +88,9 @@
 
              
        
-
+        echo "<div class=\"exit\">";
+        echo "<a  href=\"index.php\">EXIT</a>";
+        echo "</div>";
     
 
     
@@ -94,13 +99,13 @@
 
     }else if ($function == 2) // Show a played game
     {
-        require_once("gameInfoBusinessLogic.php");
+        require_once("../BusinessLogic/gameInfoBusinessLogic.php");
         $game=$_GET['game'];
         $movement=$_GET['movement'];
         $history= getGameHistory($game);
         $board = getBoardStatus($game,$movement,$history);
 
-        echo "<div class=\"game-info\">";
+        echo "<div class=\"game-info-played\">";
 
         drawGameInfo();
         drawMoveButtons($history);
@@ -111,6 +116,11 @@
         echo "<div class=\"board\">";
         DrawChessGame($board);
         echo "</div>";
+
+        echo "<div class=\"exit\">";
+        echo "<a  href=\"index.php\">EXIT</a>";
+        echo "</div>";
+
     }
     
 
@@ -232,7 +242,7 @@
                 echo "<td class=\"dead\">";
 
                 if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
-                    echo "<img src=\"../Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
+                    echo "<img src=\"../../Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
                     $positionPiecesShown++;
                 }
 
@@ -270,7 +280,7 @@
                 echo "<td class=\"dead\">";
 
                 if (!empty($piecesArray) && count($piecesArray) > $positionPiecesShown) {
-                    echo "<img src=\"../Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
+                    echo "<img src=\"../../Icons/" . $piecesArray[$positionPiecesShown] . ".png\" >";
                     $positionPiecesShown++;
                 }
 
@@ -307,7 +317,7 @@
                 }
 
                 if ($square != "0000" && $square != "####") {
-                    echo "<img src=\"../Icons/" . $boardArray[$i][$y] . ".png\" >";
+                    echo "<img src=\"../../Icons/" . $boardArray[$i][$y] . ".png\" >";
 
                 }
 
@@ -398,11 +408,27 @@
 
         $ultima = count($history)-1;
 
-        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=0\"><img src=\"../Icons/skip_previous.png\" class=\"movement-buttons\"></a>";
-        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$anterior."\"><img src=\"../Icons/arrow_back.png\" class=\"movement-buttons\"></a>";
-        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$posterior."\"><img src=\"../Icons/arrow_forward.png\" class=\"movement-buttons\"></a>";
-        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$ultima."\"><img src=\"../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=0\"><img src=\"../../Icons/skip_previous.png\" class=\"movement-buttons\"></a>";
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$anterior."\"><img src=\"../../Icons/arrow_back.png\" class=\"movement-buttons\"></a>";
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$posterior."\"><img src=\"../../Icons/arrow_forward.png\" class=\"movement-buttons\"></a>";
+        echo "<a href=\"boardView.php?function=".$_GET['function']."&game=".$_GET['game']."&movement=".$ultima."\"><img src=\"../../Icons/skip_next.png\" class=\"movement-buttons\"></a>";
 
+    }
+
+    function getGameHistory($idGame){
+        require_once("../BusinessLogic/gameStatusBusinessLogic.php");
+        $historyBL = new GameStatusBusinessLogic();
+        $gameHistory = $historyBL->get($idGame);
+
+        $history = array();
+
+
+        foreach ($gameHistory as $movement) {
+            array_push($history,$movement);
+        }
+
+
+        return $history;
     }
 
 
@@ -411,7 +437,7 @@
     }
 
     function getBoardApi($boardStatus){
-        require_once("boardStatusApiBusinessLogic.php");
+        require_once("../BusinessLogic/boardStatusApiBusinessLogic.php");
         $boardStatusApiBL = new BoardStatusApiBusinessLogic();
         $gamesData = $boardStatusApiBL->get($boardStatus);
         echo "<p>White Value: " . $gamesData->getMaterialValueWhitePieces(). "</p>";
@@ -422,7 +448,7 @@
 
     function movePiece($boardStatus,$fromCol,$fromRow,$toCol,$toRow)
     {
-        require_once("movementApiBusinessLogic.php");
+        require_once("../BusinessLogic/movementApiBusinessLogic.php");
         $movementBL = new MovementApiBusinessLogic();
        $movement = $movementBL->get($boardStatus,$fromCol,$fromRow,$toCol,$toRow);
 
@@ -440,7 +466,7 @@
 
     function insertBoardStatus($boardStatus)
     {
-        require_once("addBoardStatusGameBusinessLogic.php");
+        require_once("../BusinessLogic/addBoardStatusGameBusinessLogic.php");
         $addStatusBL = new AddBoardStatusGameBusinessLogic();
         $addStatusBL->get($boardStatus);//Insert to database
     }

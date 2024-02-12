@@ -20,9 +20,9 @@ class AddGameDataAccess
 		$query = mysqli_prepare($conexion, "INSERT INTO chess_game.T_Matches
 		(title,white,black,startDate)
 		VALUES
-		(?,$IdPlayer1,$IdPlayer2,now());");
+		(?,?,?,now());");
 
-		$query->bind_param('s', $sanitized_game_name);
+		$query->bind_param('sii', $sanitized_game_name,$IdPlayer1,$IdPlayer2);
         $query->execute();
 
 	}

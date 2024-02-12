@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>AJEDREZ</title>
-    <link rel="stylesheet" type="text/css"  href="../style.css">
+    <link rel="stylesheet" type="text/css"  href="../../style.css">
 </head>
 
 
@@ -57,7 +57,7 @@
             
                     
                     <?php
-                        require("playersBusinessLogic.php");    
+                        require("../BusinessLogic/playersBusinessLogic.php");    
                         $playersBL = new PlayersBusinessLogic();
                         $playersData = $playersBL->get();
 
@@ -74,8 +74,6 @@
                         echo "</select>";
                     ?>
                 
-            
-            <br>
             <br>
             <br>
             <p>PLAYER 2</p>

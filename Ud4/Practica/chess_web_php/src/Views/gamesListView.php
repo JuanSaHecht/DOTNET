@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>AJEDREZ</title>
-    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
 </head>
 
 
@@ -60,7 +60,7 @@
                     <tbody>
                     <?php
                     
-                    require_once("gamesListBusinessLogic.php");
+                    require_once("../BusinessLogic/gamesListBusinessLogic.php");
 
                     $filter = $_GET['filter'];   
                              

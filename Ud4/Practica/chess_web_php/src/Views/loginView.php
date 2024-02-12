@@ -1,10 +1,10 @@
 <?php
 
-require ("userBusinessLogic.php");
+require ("../BusinessLogic/userBusinessLogic.php");
 
 if ($_SERVER["REQUEST_METHOD"]=="POST")
 {
-    $usuarioBL = new UsuarioReglasNegocio();
+    $usuarioBL = new UserBussinessLogic();
     $perfil =  $usuarioBL->verificar($_POST['usuario'],$_POST['clave']);
 
     if ($perfil==="gold" || $perfil==="silver")
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
 <head>
     <meta charset="UTF-8">
     <title>AJEDREZ</title>
-    <link rel="stylesheet" type="text/css"  href="../style.css">
+    <link rel="stylesheet" type="text/css"  href="../../style.css">
 </head>
 
 

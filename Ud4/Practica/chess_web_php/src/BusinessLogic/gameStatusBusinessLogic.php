@@ -1,6 +1,6 @@
 <?php
 
-require("gameStatusDataAccess.php");
+require("../DataAccess/gameStatusDataAccess.php");
 class GameStatusBusinessLogic
 {
     private $_ID;

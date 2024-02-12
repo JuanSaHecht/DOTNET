@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>AJEDREZ</title>
-    <link rel="stylesheet" type="text/css"  href="../style.css">
+    <link rel="stylesheet" type="text/css"  href="../../style.css">
 </head>
 
 
@@ -14,6 +14,8 @@
         <h1><a href="index.php">CHESS</a></h1> 
         <?php 
                     session_start(); // reanudamos la sesión
+                    $_SESSION['insertedMatch']=false; // The new game has been inserted to the database
+                    $_SESSION['board']=null; // value of the board
                     if (!isset($_SESSION['clave']))
                     {
                         echo "<span class=\"login\"><a href=\"login.php\">Log In</a></span>";
@@ -22,8 +24,6 @@
                             echo "<span class=\"login\"><p>".$_SESSION['username']."</p><a href=\"logout.php\">Log Out</a></span> ";
                         }
                     }
-
-
                     ?>
 
         <!-- <span class="login"><a href="login.php">Log In</a></span> -->

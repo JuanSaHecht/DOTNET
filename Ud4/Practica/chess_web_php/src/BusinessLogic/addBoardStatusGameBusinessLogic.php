@@ -1,6 +1,6 @@
 <?php
 
-require("addBoardStatusGameDataAccess.php");
+require("../DataAccess/addBoardStatusGameDataAccess.php");
 
 class AddBoardStatusGameBusinessLogic
 {

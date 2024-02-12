@@ -1,6 +1,6 @@
 <?php
 
-require("boardStatusApiDataAccess.php");
+require("../DataAccess/boardStatusApiDataAccess.php");
 
 class BoardStatusApiBusinessLogic
 {
