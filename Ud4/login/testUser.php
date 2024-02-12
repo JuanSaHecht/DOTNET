@@ -9,14 +9,14 @@ ini_set('display_errors', 'On');
 function test_alta_usuario()
 {
     $u = new UsuarioAccesoDatos();
-    return $u->insertar('carlosSilver','silver','carlosSilver','carlosSilver@prueba.com');
+    return $u->insertar('juanSilver','silver','juanSilver','juanSilver@prueba.com');
 }
 
 function test_verificar_usuario_encontrado()
 {
-    $perfil_esperado = 'gold';
+    $perfil_esperado = 'silver';
     $u = new UsuarioAccesoDatos();
-    $perfil = $u->verificar('carlosGold','carlosGold');
+    $perfil = $u->verificar('juanSilver','juanSilver');
     return $perfil === $perfil_esperado;
 }
 
