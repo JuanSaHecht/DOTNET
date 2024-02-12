@@ -1,6 +1,6 @@
 <?php
 
-require("../DataAccess/userDataAcces.php");
+require("../DataAccess/userDataAccess.php");
 
 class UserBussinessLogic
 {
@@ -10,7 +10,7 @@ class UserBussinessLogic
     }
     function verificar($usuario, $clave)
     {
-        $usuariosDAL = new UserDataAcces();
+        $usuariosDAL = new UserDataAccess();
         $res = $usuariosDAL->verificar($usuario,$clave);
         
         return $res;

@@ -1,25 +1,23 @@
 <?php
 
-class UserDataAcces
+class UserDataAccess
 {
 	
 	function __construct()
     {
     }
 
-	function insertar($usuario,$perfil,$clave)
+	function insertar($usuario,$perfil,$clave,$email)
 	{
-
-        
 		$conexion = mysqli_connect('localhost','root','12345');
 		if (mysqli_connect_errno())
 		{
 				echo "Error conecting to MySQL: ". mysqli_connect_error();
 		}
  		mysqli_select_db($conexion, 'chess_game');
-		$consulta = mysqli_prepare($conexion, "INSERT INTO chess_game.T_Players(name,password,profileType,email) values (?,?,?,\"ruben@gmail.com\");");
+		$consulta = mysqli_prepare($conexion, "INSERT INTO chess_game.T_Players(name,password,profileType,email) values (?,?,?,?);");
         $hash = password_hash($clave, PASSWORD_DEFAULT);
-        $consulta->bind_param("sss", $usuario,$hash,$perfil);
+        $consulta->bind_param("ssss", $usuario,$hash,$perfil,$email);
         $res = $consulta->execute();
         
         echo $usuario.$perfil.$clave;
