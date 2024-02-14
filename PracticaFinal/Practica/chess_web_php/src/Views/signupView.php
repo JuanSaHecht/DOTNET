@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         <div class="form-signup">
             <form class="login-form" method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <input id="usuario" name="usuario" type="text" placeholder="username"/>
-                <input id = "clave" name="clave" type="password" placeholder="password" maxlength="8"/>
+                <input id = "clave" name="clave" type="password" placeholder="password"/>
                 <input id = "email" name="email" type="text" placeholder="e-mail"/>
                 <select name="perfil" id="perfil">
                     <option value="silver">Silver</option>

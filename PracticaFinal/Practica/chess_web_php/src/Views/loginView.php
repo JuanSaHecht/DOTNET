@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         <div class="form">
             <form class="login-form" method = "POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <input id="usuario" name="usuario" type="text" placeholder="username"/>
-                <input id = "clave" name="clave" type="password" placeholder="password" maxlength="8"/>
+                <input id = "clave" name="clave" type="password" placeholder="password"/>
                 <button type = "submit" >Login</button>
                 <a href="signupView.php">Sign Up</a>
             </form>
