@@ -29,17 +29,13 @@
         $player1 = $_POST['player1'];
         $player2 = $_POST['player2'];
         $gameName = $_POST['game-name'];
-
-        var_dump($_SESSION['insertedMatch']);
         
         if ($_SESSION['insertedMatch'] == false)
         {
-            var_dump($_SESSION['insertedMatch']);
             $addGameBL = new AddGameBusinessLogic();
             $addGameBL->get($player1,$player2,$gameName);//Insert to database
             insertBoardStatus($_SESSION['board']);
             $_SESSION['insertedMatch'] = true;
-            var_dump($_SESSION['insertedMatch']);
         }
         
 

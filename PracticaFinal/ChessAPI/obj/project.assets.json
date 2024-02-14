@@ -426,11 +426,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/Ud4/ChessAPI/ChessAPI.csproj",
+      "projectUniqueName": "/var/www/html/PracticaFinal/ChessAPI/ChessAPI.csproj",
       "projectName": "ChessAPI",
-      "projectPath": "/var/www/html/Ud4/ChessAPI/ChessAPI.csproj",
+      "projectPath": "/var/www/html/PracticaFinal/ChessAPI/ChessAPI.csproj",
       "packagesPath": "/home/horabaixa/.nuget/packages/",
-      "outputPath": "/var/www/html/Ud4/ChessAPI/obj/",
+      "outputPath": "/var/www/html/PracticaFinal/ChessAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/horabaixa/.nuget/NuGet/NuGet.Config"

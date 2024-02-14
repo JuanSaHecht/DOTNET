@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AEhlRipkxF0I1cR7FyVJk6sX4CJOtx4ADDV1XqfG3a3GxUhAVSj0Uv4TUPXvoTatgw8pyLC/DFXh254A+IeLcQ==",
+  "dgSpecHash": "PcXHBasSVO8zc49Y3LpArl8Vx+5rxVv5AAeDCLQpAZOuMKXkD3yBHJY6KRJf2B3BUbqMwPiR+EHZc1tSajfdYA==",
   "success": true,
-  "projectFilePath": "/var/www/html/Ud4/ChessAPI/ChessAPI.csproj",
+  "projectFilePath": "/var/www/html/PracticaFinal/ChessAPI/ChessAPI.csproj",
   "expectedPackageFiles": [
     "/home/horabaixa/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/home/horabaixa/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
