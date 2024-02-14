@@ -484,10 +484,12 @@ td.dead {
 }
 
 .game-info{
-  background-color: white;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
   position: absolute;
   width: 20%;
-  height: 25%;
+  height: 20%;
   top: 5%;
   left: 5%;
   text-align: center;
@@ -496,12 +498,19 @@ td.dead {
   border-radius: 10px;
   font-family: "Roboto", sans-serif;
 }
+.game-info p{
+  width: 300px;
+  margin: auto;
+}
 
 .game-info-played{
-  background-color: white;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  margin: auto;
   position: absolute;
   width: 20%;
-  height: 29%;
+  height: 30%;
   top: 5%;
   left: 5%;
   text-align: center;
@@ -521,10 +530,12 @@ td.dead {
 .movement-buttons{
   margin-top: 10px;
   transition: 0.3s;
+  border: 1px solid white;
+  background-color: hsl(0, 0%, 100%,1);
 }
 
 .movement-buttons:hover{
-  background-color: hsl(0, 0%, 0%,0.2);
+  background-color: hsl(0, 0%, 90%);
 }
 
 

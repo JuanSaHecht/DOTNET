@@ -329,11 +329,13 @@
             }
         }
 
-        deadTableWhite($board);
+        deadTableBlack($board);
 
         inGameBoard($boardArray);
 
-        deadTableBlack($board);
+        deadTableWhite($board);
+
+        
     }
 
     function drawGameInfo(){
