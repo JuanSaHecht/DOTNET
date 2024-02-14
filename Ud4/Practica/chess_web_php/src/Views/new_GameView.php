@@ -49,7 +49,7 @@
         </div>
     </header>
     
-    <nav>
+    <nav class="newGame-menu">
         <h2>NEW GAME</h2>
 
         <div class="player-election">

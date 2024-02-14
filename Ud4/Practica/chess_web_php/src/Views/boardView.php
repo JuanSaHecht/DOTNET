@@ -45,12 +45,17 @@
 
         if ($_SERVER["REQUEST_METHOD"] == "POST" && $flag == 0) {
             
-            $fromCol = $_POST['fromCol'];//7
-            $fromRow = $_POST['fromRow'];//0
-            $toCol = $_POST['toCol'];//7
-            $toRow = $_POST['toRow'];//4
-            $_SESSION['board'] = movePiece($_SESSION['board'],$fromCol,$fromRow,$toCol,$toRow);
+            $fromCol = $_POST['fromCol'];
+            $fromRow = $_POST['fromRow'];
+            $toCol = $_POST['toCol'];
+            $toRow = $_POST['toRow'];
+
+            $movePieceArray = movePiece($_SESSION['board'],$fromCol,$fromRow,$toCol,$toRow); // Array returns pos 0 bool movement valid or not and pos 1 board status
+            $_SESSION['board'] = $movePieceArray[1];
+            if ($movePieceArray[0]== true) {
             insertBoardStatus($_SESSION['board']);
+            }
+            
         } 
         
 
@@ -66,27 +71,8 @@
         DrawChessGame($_SESSION['board']);
         echo "</div>";
 
+        drawMovementMenu($gameName,$player1,$player2);
        
-        echo "<div class=\"menu-movement\">";
-        echo "<form  method=\"post\" action=\"\">";
-        echo "<input type=\"hidden\" name=\"game-name\" id=\"game-name\" value=".$gameName.">";
-        echo "<input type=\"hidden\" name=\"player1\" id=\"player1\" value=".$player1.">";
-        echo "<input type=\"hidden\" name=\"player2\" id=\"player2\" value=".$player2.">";
-        echo "<input class=\"numbers\" type=\"number\" id=\"fromCol\" name=\"fromCol\" min=\"0\" max=\"7\" placeholder=\"From Column\" required>";
-        echo "<br>";
-        echo "<input class=\"numbers\" type=\"number\" id=\"fromRow\" name=\"fromRow\" min=\"0\" max=\"7\" placeholder=\"From Row\" required>";
-        echo "<br>";
-        echo "<input class=\"numbers\" type=\"number\" id=\"toCol\" name=\"toCol\" min=\"0\" max=\"7\" placeholder=\"To Column\" required>";
-        echo "<br>";
-        echo "<input class=\"numbers\" type=\"number\" id=\"toRow\" name=\"toRow\" min=\"0\" max=\"7\" placeholder=\"To Row\" required>";
-        echo "<br>";
-        echo "<input type=\"hidden\" name=\"flag\" id=\"flag\" value=0>";
-        echo "<br><br>";
-        echo "<input class=\"boton\" type=\"submit\"  value=\"MOVE\">";
-        echo "</form>";
-        echo "</div>";
-
-             
        
         echo "<div class=\"exit\">";
         echo "<a  href=\"index.php\">EXIT</a>";
@@ -455,13 +441,34 @@
        if ($movement[0] == false) {
         echo '<script>alert("Invalid Movement!");</script>';
         
-        return $movement[1];
+        return $movement;
        }else if($movement[0] == true)
        {
-        return $movement[1];
+        return $movement;
        }
 
        
+    }
+
+    function drawMovementMenu($gameName,$player1,$player2){
+        echo "<div class=\"menu-movement\">";
+        echo "<form  method=\"post\" action=\"\">";
+        echo "<input type=\"hidden\" name=\"game-name\" id=\"game-name\" value=".$gameName.">";
+        echo "<input type=\"hidden\" name=\"player1\" id=\"player1\" value=".$player1.">";
+        echo "<input type=\"hidden\" name=\"player2\" id=\"player2\" value=".$player2.">";
+        echo "<input class=\"numbers\" type=\"number\" id=\"fromCol\" name=\"fromCol\" min=\"0\" max=\"7\" placeholder=\"From Column\" required>";
+        echo "<br>";
+        echo "<input class=\"numbers\" type=\"number\" id=\"fromRow\" name=\"fromRow\" min=\"0\" max=\"7\" placeholder=\"From Row\" required>";
+        echo "<br>";
+        echo "<input class=\"numbers\" type=\"number\" id=\"toCol\" name=\"toCol\" min=\"0\" max=\"7\" placeholder=\"To Column\" required>";
+        echo "<br>";
+        echo "<input class=\"numbers\" type=\"number\" id=\"toRow\" name=\"toRow\" min=\"0\" max=\"7\" placeholder=\"To Row\" required>";
+        echo "<br>";
+        echo "<input type=\"hidden\" name=\"flag\" id=\"flag\" value=0>";
+        echo "<br><br>";
+        echo "<input class=\"boton\" type=\"submit\"  value=\"MOVE\">";
+        echo "</form>";
+        echo "</div>";
     }
 
     function insertBoardStatus($boardStatus)
@@ -471,6 +478,7 @@
         $addStatusBL->get($boardStatus);//Insert to database
     }
     //PRUEBA GetScore https://localhost:7246/ChessGame?board=ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL    
+    //PRUEBA Movement Caballo https://localhost:7246/Movement?boardStatus=ROWH,KNWH,BIWH,QUWH,KIWH,BIWH,KNWH,ROWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,PAWH,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,0000,PABL,PABL,PABL,PABL,PABL,PABL,PABL,PABL,ROBL,KNBL,BIBL,QUBL,KIBL,BIBL,KNBL,ROBL&fromCol=1&fromRow=0&toCol=0&toRow=2
     ?>
 </body>
 

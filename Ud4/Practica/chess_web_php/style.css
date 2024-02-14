@@ -75,13 +75,9 @@ header a{
 /* -------------------------------------------------------------- */
 
 
-
-
-
-
 nav{
     padding-top: 100px;
-    width: 97%;
+    width: 100%;
     height: 70%;
     margin: 14px;
     margin-bottom: 10px;
@@ -90,22 +86,44 @@ nav{
     font-size: x-large;
 }
 
+nav p{
+  width: 1300px;
+  margin: auto;
+}
+
+
+
 /* NEW GAME------------------------------------------------------ */
+
+.newGame-menu{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 780px;
+  top: 10px;
+  max-width: 360px;
+  height: 450px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 .player-election{
     padding-top: 10px;
-    
+}
+
+.player-election p{
+  width: 360px;
 }
 
 
 .player-election input{
-  margin-top: 10px;
+  margin-top: 20px;
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 300px;
   height: 20px;
   border: 0;
-  margin: 0 0 15px;
+  margin: 10px 0 15px;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
@@ -114,14 +132,13 @@ nav{
 }
 
 .player-election select{
-  margin-top: 10px;
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 300px;
   height: 30px;
   border: 0;
-  margin: 0 0 15px;
+  margin: 10px 0 15px;
   padding: 0 15px;
   box-sizing: border-box;
   font-size: 14px;
@@ -134,7 +151,7 @@ nav{
     font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  /* background: hsl(122, 39%, 49%); */
+  margin-top: 10px;
   background: hsl(36, 98%, 37%);
   border: 0;
   padding: 15px;
@@ -146,23 +163,26 @@ nav{
 }
 
 .player-election button:hover, .player-election button:active,.player-election button:focus {
-  /* background: hsl(123, 41%, 45%); */
   background: hsl(37, 100%, 33%);
 }
 
 /* -------------------------------------------------------------- */
 
-.games-list{
-    padding-top: 20px;
+.games-list{ 
+  position: absolute;
+  left: 480px;
+  bottom: 150px;
+    max-width: 1020px;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
     background-color: hsla(0, 0%, 15%, 0.9);
-    width: 1000px;
+    width: 1020px;
     height: 60%;
     
 }
+
+.games-list h2{
+  margin-top: 20px;
+} 
 
 .scrolling-table{
     padding-top: 20px;
@@ -171,8 +191,9 @@ nav{
     margin-right: auto;
     margin-top: 10px;
     width: 1000px;
-    max-height: 60%;
+    max-height: 74%;
             overflow-y: auto; 
+            margin-bottom: 10px;
 }
 
 .scrolling-table table {
@@ -186,17 +207,19 @@ nav{
 }
 
 
-
+.scrolling-table th{
+  padding: 5px;
+}
 
 .scrolling-table a {
     text-decoration: none;
     color: white;
+    transition: all 0.2s ease-in-out;
 }
 
-.scrolling-table a:visited {
-    color: white;
+.scrolling-table a:hover {
+  color: hsl(36, 98%, 37%);
 }
-
 
 .scrolling-table tr,td{
     border: 2px solid white;
@@ -223,7 +246,6 @@ nav{
     color: white;
     text-transform: capitalize;
     text-decoration: none;
-
     transition: all 0.2s ease-in-out;
   }
 
@@ -237,7 +259,6 @@ nav{
     position: absolute;
     z-index: 1;
     top: 30%;
-    /* background: #000000; */
     max-width: 360px;
     margin: 0 auto 80px 0;
     padding: 45px;
@@ -285,7 +306,6 @@ nav{
     margin-bottom: 20px;
   }
   .form-signup button:hover,.form-signup button:active,.form-signup button:focus {
-    /* background: hsl(123, 41%, 45%); */
     background:  hsl(37, 100%, 33%);
    
   }
@@ -301,7 +321,6 @@ nav{
   .form {
     position: relative;
     z-index: 1;
-    /* background: #000000; */
     max-width: 360px;
     margin: 0 auto 80px 0;
     padding: 45px;
@@ -336,7 +355,6 @@ nav{
     margin-bottom: 20px;
   }
   .form button:hover,.form button:active,.form button:focus {
-    /* background: hsl(123, 41%, 45%); */
     background:  hsl(37, 100%, 33%);
    
   }
@@ -410,10 +428,10 @@ nav{
 
 .board {
   position: relative;
-  left: 35%;
+  left: 37%;
   width: 600px;
   height: 900px;
-  padding-top: 30px;
+  top: 47px;
 }
 
 table.dead {
@@ -483,11 +501,11 @@ td.dead {
   background-color: white;
   position: absolute;
   width: 20%;
-  height: 35%;
+  height: 29%;
   top: 5%;
   left: 5%;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 20px;
   opacity: 0.7;
   border-radius: 10px;
   font-family: "Roboto", sans-serif;
@@ -496,13 +514,20 @@ td.dead {
 .menu-movement{
   position: absolute;
   display: block;
-  top: 50%;
+  top: 45%;
   left: 100px;
 }
 
 .movement-buttons{
   margin-top: 10px;
+  transition: 0.3s;
 }
+
+.movement-buttons:hover{
+  background-color: hsl(0, 0%, 0%,0.2);
+}
+
+
 
 .numbers {
   font-family: "Roboto", sans-serif;
@@ -520,7 +545,6 @@ td.dead {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  /* background: hsl(122, 39%, 49%); */
   background: hsl(36, 98%, 37%);
   width: 100%;
   border: 0;
@@ -533,7 +557,6 @@ td.dead {
 }
 
 .boton:hover,.boton:active,.boton:focus {
-  /* background: hsl(123, 41%, 45%); */
   background: hsl(37, 100%, 33%);
 }
 
@@ -548,7 +571,7 @@ td.dead {
 
 footer{
     position: absolute;
-    top: 90%;
+    top: 92%;
     width: 97%;
     height: 4%;
     margin: 14px;
